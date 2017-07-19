@@ -300,6 +300,149 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/19/bootstrap-datetimepicker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/19/bootstrap-datetimepicker/" itemprop="url">bootstrap datetimepicker浏览器卡死</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T16:36:02+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bootstrap/" itemprop="url" rel="index">
+                    <span itemprop="name">bootstrap</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>最近在做后台系统文章管理的时候遇到了问题，后台采用bootstrap搭建，然后里面有个需求需要用到时间控件，所有使用了datetimepicker，然后出现了多个选择框的时候，浏览器卡死的问题，具体如下：</p>
+</blockquote>
+<p>文章列表页面需要给单个文章修改上架时间的功能，在页面初始化加载的时候，运行了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.demo'</span>).datetimepicker(&#123;</div><div class="line">	format: <span class="string">'yyyy-mm-dd hh:ii:ss'</span>,</div><div class="line">	language: <span class="string">'zh-CN'</span>,</div><div class="line">	todayHighlight : <span class="literal">true</span>,</div><div class="line">	autoclose : <span class="literal">true</span>,</div><div class="line">	todayBtn: <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="第一个问题："><a href="#第一个问题：" class="headerlink" title="第一个问题："></a>第一个问题：</h3><p>当翻页的时候，新加载的<code>input</code>没有得到渲染，所有选择没有效果。</p>
+<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><p>要在<code>ajax</code>的<code>success</code>重新渲染列表后重新再一次的初始化<code>input</code>。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/19/bootstrap-datetimepicker/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/fit-editor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -390,7 +533,7 @@
       
         
           <blockquote>
-<p>最近公司产品上线了商城模块，为了方法推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 </p>
+<p>最近公司产品上线了商城模块，为了方便推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 </p>
 </blockquote>
 <h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>找到<code>ueditor.config.js</code>文件中的toolbars的数组，增加一个<code>mydialog</code>,然后找到<code>labelMap</code>对象，添加<code>&#39;mydialog&#39;:&#39;测试&#39;</code>,如果不需要全局也可以对单独文件添加</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var ue = UE.getEditor(<span class="string">'container'</span>,&#123;</div><div class="line">    toolbars: [</div><div class="line">        [<span class="string">'source'</span>, <span class="string">'undo'</span>, <span class="string">'redo'</span>, <span class="string">'bold'</span>,<span class="string">'link'</span>,<span class="string">'unlink'</span>,<span class="string">'simpleupload'</span>,<span class="string">'insertimage'</span>,<span class="string">'fontsize'</span>,<span class="string">'paragraph'</span>,<span class="string">'forecolor'</span>,<span class="string">'mydialog'</span>]</div><div class="line">    ],</div><div class="line">    labelMap : &#123;</div><div class="line">    	<span class="string">'mydialog'</span> : <span class="string">'测试'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -751,7 +894,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -762,7 +905,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -773,7 +916,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

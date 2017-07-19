@@ -93,23 +93,23 @@
 
 
 
-<meta name="description" content="最近公司产品上线了商城模块，为了方法推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 
+<meta name="description" content="最近公司产品上线了商城模块，为了方便推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 
 
 第一步找到ueditor.config.js文件中的toolbars的数组，增加一个mydialog,然后找到labelMap对象，添加&amp;#39;mydialog&amp;#39;:&amp;#39;测试&amp;#39;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ueditor自定义弹出框">
 <meta property="og:url" content="http://yoursite.com/2017/07/13/fit-editor/index.html">
 <meta property="og:site_name" content="随记">
-<meta property="og:description" content="最近公司产品上线了商城模块，为了方法推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 
+<meta property="og:description" content="最近公司产品上线了商城模块，为了方便推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 
 
 第一步找到ueditor.config.js文件中的toolbars的数组，增加一个mydialog,然后找到labelMap对象，添加&amp;#39;mydialog&amp;#39;:&amp;#39;测试&amp;#39;">
 <meta property="og:image" content="http://yoursite.com/images/2017-7/ueditor-2.png">
 <meta property="og:image" content="http://yoursite.com/images/2017-7/ueditor-3.png">
 <meta property="og:image" content="http://yoursite.com/images/2017-7/ueditor-4.png">
-<meta property="og:updated_time" content="2017-07-13T06:38:02.000Z">
+<meta property="og:updated_time" content="2017-07-14T01:59:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ueditor自定义弹出框">
-<meta name="twitter:description" content="最近公司产品上线了商城模块，为了方法推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 
+<meta name="twitter:description" content="最近公司产品上线了商城模块，为了方便推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 
 
 第一步找到ueditor.config.js文件中的toolbars的数组，增加一个mydialog,然后找到labelMap对象，添加&amp;#39;mydialog&amp;#39;:&amp;#39;测试&amp;#39;">
 <meta name="twitter:image" content="http://yoursite.com/images/2017-7/ueditor-2.png">
@@ -396,7 +396,7 @@
 
       
         <blockquote>
-<p>最近公司产品上线了商城模块，为了方法推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 </p>
+<p>最近公司产品上线了商城模块，为了方便推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 </p>
 </blockquote>
 <h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>找到<code>ueditor.config.js</code>文件中的toolbars的数组，增加一个<code>mydialog</code>,然后找到<code>labelMap</code>对象，添加<code>&#39;mydialog&#39;:&#39;测试&#39;</code>,如果不需要全局也可以对单独文件添加</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var ue = UE.getEditor(<span class="string">'container'</span>,&#123;</div><div class="line">    toolbars: [</div><div class="line">        [<span class="string">'source'</span>, <span class="string">'undo'</span>, <span class="string">'redo'</span>, <span class="string">'bold'</span>,<span class="string">'link'</span>,<span class="string">'unlink'</span>,<span class="string">'simpleupload'</span>,<span class="string">'insertimage'</span>,<span class="string">'fontsize'</span>,<span class="string">'paragraph'</span>,<span class="string">'forecolor'</span>,<span class="string">'mydialog'</span>]</div><div class="line">    ],</div><div class="line">    labelMap : &#123;</div><div class="line">    	<span class="string">'mydialog'</span> : <span class="string">'测试'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -464,6 +464,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/19/bootstrap-datetimepicker/" rel="prev" title="bootstrap datetimepicker浏览器卡死">
+                bootstrap datetimepicker浏览器卡死 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -535,7 +539,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -546,7 +550,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -557,7 +561,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
