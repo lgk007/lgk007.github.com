@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[js replace方法替换变量]]></title>
-    <url>%2F2017%2F07%2F25%2F7-25%2F</url>
+    <url>%2F2017%2F07%2F25%2Fjs-replace%2F</url>
     <content type="text"><![CDATA[使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下： 12345//替换第一个astring.replace('a','b')//替换全部astring.replace(/a/g,'b')&#125;) 但是我的后台分测试服务器及线上服务器，所有需要替换的值是一个变量:12var host = 'www.a.com'string.replace(host,'b') 这样写，可以替换第一个，到那时无法替换全部，然后改成：12var host = 'www.a.com'string.replace(/host/g,'b') 这样写，无法替换，解决方法为：12var host = 'www.a.com'string.replace(new RegExp(host,'g'),'b')]]></content>
       <categories>
         <category>javascript</category>
