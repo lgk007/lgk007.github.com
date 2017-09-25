@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[认识HTML的DOCTYPE]]></title>
+    <url>%2F2017%2F09%2F18%2FhtmlDoctype%2F</url>
+    <content type="text"><![CDATA[一直想回顾回顾以前的基础知识，刚好最近参加了腾讯imweb课堂的学习，从零开始再次学习，开始整理一系列学习笔记。前端工程师的三个必会技能html、css、javascript,咱先从html开始。 什么是DOCTYPE?在学习HTML文档初，第一段代码往往是&lt;!DOCTYPE html&gt;，那么什么是&lt;!DOCTYPE html&gt;，它又有意义是什么呢？&lt;!DOCTYPE&gt;不是HTML标签。它为浏览器提供一项信息（声明），即HTML是用什么版本编写的。&lt;!DOCTYPE&gt;声明必须位于HTML5文档中的第一行，也就是位于&lt;html&gt;标签之前。HTML有多个不同的版本，该标签告知浏览器文档所使用哪种HTML规范，从而正确的显示网页。 HTML版本HTML也有多个不同的版本，只有完全明白页面中使用的确切HTML版本，浏览器才能完全正确地显示出HTML页面。现在常用的版本为HTML5，声明就是&lt;!DOCTYPE html&gt;，没个版本又不同的声明，下面是HTML版本的列表: 版本 年份 HTML 1991 HTML2.0 1995 HTML3.2 1997 HTML4.01 1999 XHTML1.0 2000 HTML5 2012 XHTML5 2013 常见的 DOCTYPE 声明HTML51&lt;!DOCTYPE html&gt; HTML 4.01 Strict这个 DTD 包含所有 HTML 元素和属性，但不包括表象或过时的元素（如 font ）。框架集是不允许的。1&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt; HTML 4.01 Transitional这个 DTD 包含所有 HTML 元素和属性，包括表象或过时的元素（如 font ）。框架集是不允许的。1&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt; HTML 4.01 Frameset这个 DTD 与 HTML 4.01 Transitional 相同，但是允许使用框架集内容。1&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"&gt; XHTML 1.0 Strict该 DTD 包含所有 HTML 元素和属性，但不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。必须以格式正确的 XML 来编写标记。12&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt; XHTML 1.0 Transitional该 DTD 包含所有 HTML 元素和属性，包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。必须以格式正确的 XML 来编写标记。12&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt; XHTML 1.0 Frameset该 DTD 等同于 XHTML 1.0 Transitional，但允许框架集内容。12&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt; XHTML 1.1该 DTD 等同于 XHTML 1.0 Strict，但允许添加模型（例如提供对东亚语系的 ruby 支持）。1&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt; 关于HTML 有效DOCTYPES，点击查看]]></content>
+      <categories>
+        <category>html</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>doctype</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[js replace方法替换变量]]></title>
     <url>%2F2017%2F07%2F25%2Fjs-replace%2F</url>
     <content type="text"><![CDATA[使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下： 12345//替换第一个astring.replace('a','b')//替换全部astring.replace(/a/g,'b')&#125;) 但是我的后台分测试服务器及线上服务器，所有需要替换的值是一个变量:12var host = 'www.a.com'string.replace(host,'b') 这样写，可以替换第一个，到那时无法替换全部，然后改成：12var host = 'www.a.com'string.replace(/host/g,'b') 这样写，无法替换，解决方法为：12var host = 'www.a.com'string.replace(new RegExp(host,'g'),'b')]]></content>
