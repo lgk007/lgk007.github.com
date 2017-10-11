@@ -300,6 +300,201 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/25/htmlMeta/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/25/htmlMeta/" itemprop="url">HTML<meta>标签大全</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T17:05:48+08:00">
+                2017-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html/" itemprop="url" rel="index">
+                    <span itemprop="name">html</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>前文刚写完doctype，现在来学习关于meta，再写html的时候，最长用到的就是<meta charset="UTF-8">，但是meta不止这一个属性，下面来好好的了解了解meta</p>
+</blockquote>
+<h3 id="meta的作用"><a href="#meta的作用" class="headerlink" title="meta的作用"></a>meta的作用</h3><p>meta常用于定义页面的说明，关键字，最后修改日期，和其它的元数据。这些元数据将服务于浏览器（如何布局或重载页面），搜索引擎和其它网络服务。<br>语法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"参数"</span> content=<span class="string">"具体的参数值"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="可选的属性"><a href="#可选的属性" class="headerlink" title="可选的属性"></a>可选的属性</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+<th>html4</th>
+<th>html5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>charset</td>
+<td>character encoding</td>
+<td>定义文档的字符编码。</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>content</td>
+<td>some_text</td>
+<td>定义与 http-equiv 或 name 属性相关的元信息。</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>http-equiv</td>
+<td>content-type<br>expires<br>refresh<br>set-cookie</td>
+<td>把 content 属性关联到 HTTP 头部。</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>http-equiv</td>
+<td>author<br>description<br>keywords<br>generator<br>revised<br>others</td>
+<td>把 content 属性关联到一个名称。</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>scheme</td>
+<td>some_text</td>
+<td>定义用于翻译 content 属性值的格式。</td>
+<td>√</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="http-equiv属性"><a href="#http-equiv属性" class="headerlink" title="http-equiv属性"></a>http-equiv属性</h3><p>http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容</p>
+<h4 id="content-Type"><a href="#content-Type" class="headerlink" title="content-Type"></a>content-Type</h4><p>说明：用于设定网页字符集，便于浏览器解析与渲染页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=<span class="string">"content-Type"</span> content=<span class="string">"text/html;charset=utf-8"</span>&gt;  //不推荐使用</div><div class="line">&lt;meta charset=<span class="string">"utf-8"</span>&gt; //HTML5设定网页字符集的方式，推荐使用UTF-8</div></pre></td></tr></table></figure></p>
+<h4 id="expires网页到期时间"><a href="#expires网页到期时间" class="headerlink" title="expires网页到期时间"></a>expires网页到期时间</h4><p>说明:用于设定网页的到期时间，过期后网页必须到服务器上重新传输。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=<span class="string">"expires"</span> content=<span class="string">"Sunday 26 October 2016 01:00 GMT"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="refresh自动刷新并指向某页面"><a href="#refresh自动刷新并指向某页面" class="headerlink" title="refresh自动刷新并指向某页面"></a>refresh自动刷新并指向某页面</h4><p>说明:网页将在设定的时间内，自动刷新并调向设定的网址。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"2；URL=http://www.baidu.com/"</span>&gt; //2秒后跳转百度</div></pre></td></tr></table></figure></p>
+<h4 id="Set-Cookie-cookie设定"><a href="#Set-Cookie-cookie设定" class="headerlink" title="Set-Cookie(cookie设定)"></a>Set-Cookie(cookie设定)</h4><p>说明:如果网页过期。那么这个网页存在本地的cookies也会被自动删除。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=<span class="string">"Set-Cookie"</span> content=<span class="string">"name, date"</span>&gt; //格式</div><div class="line">&lt;meta http-equiv=<span class="string">"Set-Cookie"</span> content=<span class="string">"User=liuguangkuo; path=/; expires=Sunday, 10-Jan-16 10:00:00 GMT"</span>&gt; //具体范例</div></pre></td></tr></table></figure></p>
+<h3 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a>name属性</h3><h4 id="author-作者"><a href="#author-作者" class="headerlink" title="author(作者)"></a>author(作者)</h4><p>说明:用于标注网页作者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"author"</span> content=<span class="string">"liuguangkuo"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="description-网站内容的描述"><a href="#description-网站内容的描述" class="headerlink" title="description(网站内容的描述)"></a>description(网站内容的描述)</h4><p>说明:用于标注网页作者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"description"</span> content=<span class="string">"这是刘广阔的个人博客"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="keywords-关键字"><a href="#keywords-关键字" class="headerlink" title="keywords(关键字)"></a>keywords(关键字)</h4><p>说明:用于标注网页作者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"keywords"</span> content=<span class="string">"刘广阔，博客，前端"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="generator-网页制作软件"><a href="#generator-网页制作软件" class="headerlink" title="generator(网页制作软件)"></a>generator(网页制作软件)</h4><p>说明:用于标注网页作者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"generator"</span> content=<span class="string">"atom"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="revised-网页文档的修改时间"><a href="#revised-网页文档的修改时间" class="headerlink" title="revised(网页文档的修改时间)"></a>revised(网页文档的修改时间)</h4><p>说明:用于标注网页作者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"revised"</span> content=<span class="string">"刘广阔的博客, 2017/10/10"</span>/&gt;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/18/htmlDoctype/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1353,7 +1548,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1375,7 +1570,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
