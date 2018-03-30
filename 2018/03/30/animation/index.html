@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-nameanimation-durationanimation-timing-functionanimation-delayanimation-iteration-countanimation-di">
+<meta name="description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
 <meta name="keywords" content="css3,动画,animation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css3帧动画-animation">
 <meta property="og:url" content="http://yoursite.com/2018/03/30/animation/index.html">
 <meta property="og:site_name" content="随记">
-<meta property="og:description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-nameanimation-durationanimation-timing-functionanimation-delayanimation-iteration-countanimation-di">
+<meta property="og:description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T09:39:51.000Z">
+<meta property="og:updated_time" content="2018-03-30T09:42:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3帧动画-animation">
-<meta name="twitter:description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-nameanimation-durationanimation-timing-functionanimation-delayanimation-iteration-countanimation-di">
+<meta name="twitter:description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
 
 
 
@@ -388,7 +388,7 @@
 
       
         <h3 id="一、什么是帧动画？"><a href="#一、什么是帧动画？" class="headerlink" title="一、什么是帧动画？"></a>一、什么是帧动画？</h3><p>前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。</p>
-<h3 id="二、animation的属性"><a href="#二、animation的属性" class="headerlink" title="二、animation的属性"></a>二、animation的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">animation-name</span><br><span class="line">animation-duration</span><br><span class="line">animation-timing-function</span><br><span class="line">animation-delay</span><br><span class="line">animation-iteration-count</span><br><span class="line">animation-direction</span><br></pre></td></tr></table></figure>
+<h3 id="二、animation的属性"><a href="#二、animation的属性" class="headerlink" title="二、animation的属性"></a>二、animation的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">animation-name  规定需要绑定到选择器的 keyframe 名称。。</span><br><span class="line">animation-duration  规定完成动画所花费的时间，以秒或毫秒计。</span><br><span class="line">animation-timing-function   规定动画的速度曲线。</span><br><span class="line">animation-delay 规定在动画开始之前的延迟。</span><br><span class="line">animation-iteration-count   规定动画应该播放的次数。</span><br><span class="line">animation-direction 规定是否应该轮流反向播放动画。</span><br></pre></td></tr></table></figure>
 <h4 id="animation-name属性"><a href="#animation-name属性" class="headerlink" title="animation-name属性"></a>animation-name属性</h4><p><code>animation-name</code>规定需要绑定到选择器的 keyframe 名称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-name: keyframe | none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keyframe    规定需要绑定到选择器的 keyframe 的名称。</span><br><span class="line">none    规定无动画效果（可用于覆盖来自级联的动画）。</span><br></pre></td></tr></table></figure>
 <h4 id="animation-duration属性"><a href="#animation-duration属性" class="headerlink" title="animation-duration属性"></a>animation-duration属性</h4><p><code>animation-duration</code>规定完成动画所花费的时间，以秒或毫秒计。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-duration: time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
