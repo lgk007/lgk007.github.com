@@ -301,6 +301,157 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/animation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/30/animation/" itemprop="url">css3帧动画-animation</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T17:16:09+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、什么是帧动画？"><a href="#一、什么是帧动画？" class="headerlink" title="一、什么是帧动画？"></a>一、什么是帧动画？</h3><p>补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。</p>
+<h3 id="二、animation的属性"><a href="#二、animation的属性" class="headerlink" title="二、animation的属性"></a>二、animation的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">animation-name</span><br><span class="line">animation-duration</span><br><span class="line">animation-timing-function</span><br><span class="line">animation-delay</span><br><span class="line">animation-iteration-count</span><br><span class="line">animation-direction</span><br></pre></td></tr></table></figure>
+<h4 id="animation-name属性"><a href="#animation-name属性" class="headerlink" title="animation-name属性"></a>animation-name属性</h4><p><code>animation-name</code>规定需要绑定到选择器的 keyframe 名称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-name: keyframe | none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keyframe    规定需要绑定到选择器的 keyframe 的名称。</span><br><span class="line">none    规定无动画效果（可用于覆盖来自级联的动画）。</span><br></pre></td></tr></table></figure>
+<h4 id="animation-duration属性"><a href="#animation-duration属性" class="headerlink" title="animation-duration属性"></a>animation-duration属性</h4><p><code>animation-duration</code>规定完成动画所花费的时间，以秒或毫秒计。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-duration: time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time 规定完成动画所花费的时间。默认值是 0，意味着没有动画效果。</span><br></pre></td></tr></table></figure>
+<h4 id="animation-timing-function属性"><a href="#animation-timing-function属性" class="headerlink" title="animation-timing-function属性"></a>animation-timing-function属性</h4><p><code>animation-timing-function</code>规定速度效果的速度曲线。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">linear  规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。</span><br><span class="line">ease  规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。</span><br><span class="line">ease-in 规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。</span><br><span class="line">ease-out  规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。</span><br><span class="line">ease-in-out 规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。</span><br><span class="line">cubic-bezier(n,n,n,n) 在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。</span><br></pre></td></tr></table></figure>
+<p>更多cubic-bezier自定义，查看<a href="http://cubic-bezier.com/" target="_blank" rel="noopener">http://cubic-bezier.com/</a></p>
+<image src="/2018/3-30/bg2015071017.png">
+
+<h4 id="animation-delay属性"><a href="#animation-delay属性" class="headerlink" title="animation-delay属性"></a>animation-delay属性</h4><p><code>animation-delay</code>定义过渡效果何时开始。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-delay: time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time 可选。定义动画开始前等待的时间，以秒或毫秒计。默认值是 0。</span><br></pre></td></tr></table></figure>
+<h4 id="animation-iteration-count属性"><a href="#animation-iteration-count属性" class="headerlink" title="animation-iteration-count属性"></a>animation-iteration-count属性</h4><p><code>animation-iteration-count</code>规定动画应该播放的次数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-iteration-count: n|infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n   定义动画播放次数的数值。</span><br><span class="line">infinite    规定动画应该无限次播放。</span><br></pre></td></tr></table></figure>
+<h4 id="animation-direction属性"><a href="#animation-direction属性" class="headerlink" title="animation-direction属性"></a>animation-direction属性</h4><p><code>animation-direction属性</code>规定是否应该轮流反向播放动画。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-direction: normal | alternate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">normal  默认值。动画应该正常播放。</span><br><span class="line">alternate   动画应该轮流反向播放。</span><br></pre></td></tr></table></figure>
+<h4 id="animation-属性"><a href="#animation-属性" class="headerlink" title="animation 属性"></a>animation 属性</h4><p>transition属性是<code>animation-name</code>, <code>animation-duration</code> , <code>animation-timing-function</code>, <code>animation-delay</code>, <code>animation-iteration-count</code> 和 <code>animation-direction</code>的简写，默认值为<code>none 0 ease 0 1 normal</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation: name duration timing-function delay iteration-count direction;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</image>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/transition/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -392,7 +543,7 @@
         
           
             <h3 id="一、什么是补间动画？"><a href="#一、什么是补间动画？" class="headerlink" title="一、什么是补间动画？"></a>一、什么是补间动画？</h3><p>补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。</p>
-<h3 id="二、动画的属性"><a href="#二、动画的属性" class="headerlink" title="二、动画的属性"></a>二、动画的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transition-property</span><br><span class="line">transition-duration</span><br><span class="line">transition-timing-function</span><br><span class="line">transition-delay</span><br></pre></td></tr></table></figure>
+<h3 id="二、transition的属性"><a href="#二、transition的属性" class="headerlink" title="二、transition的属性"></a>二、transition的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transition-property</span><br><span class="line">transition-duration</span><br><span class="line">transition-timing-function</span><br><span class="line">transition-delay</span><br></pre></td></tr></table></figure>
 <h4 id="transition-property属性"><a href="#transition-property属性" class="headerlink" title="transition-property属性"></a>transition-property属性</h4><p><code>transition-property</code>规定设置过渡效果的 CSS 属性的名称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  transition-property: all ｜ none | property;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">all 默认值，所有属性都将获得过渡效果。</span><br><span class="line">none  没有属性会获得过渡效果。</span><br><span class="line">property  定义应用过渡效果的 CSS 属性名称列表，列表以逗号分隔。</span><br></pre></td></tr></table></figure>
 <p>不是所有的css属性都支持transition动画，不支持的属性如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">background-images //a.jpg -&gt; b.jpg</span><br><span class="line"><span class="built_in">float</span> //none -&gt; left</span><br><span class="line">width/height //auto -&gt; 100px(不支持)，10px -&gt; 100px(支持)</span><br><span class="line">display //none -&gt;block</span><br><span class="line">visibility //hidden -&gt; visible</span><br><span class="line">position // static -&gt; absolute</span><br></pre></td></tr></table></figure></p>
@@ -1698,143 +1849,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/04/sassMap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/04/sassMap/" itemprop="url">一张图了解sass</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T16:43:02+08:00">
-                2017-07-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sass/" itemprop="url" rel="index">
-                    <span itemprop="name">sass</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/2017/7-4/sass.png"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1877,7 +1898,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1899,7 +1920,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

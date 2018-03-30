@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="一、什么是补间动画？补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。 二、动画的属性1234transition-propertytransition-durationtransition-timing-functiontransition-delay transition-property属性transi">
+<meta name="description" content="一、什么是补间动画？补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。 二、transition的属性1234transition-propertytransition-durationtransition-timing-functiontransition-delay transition-property">
 <meta name="keywords" content="css3,动画,transition">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css3补间动画-transition">
 <meta property="og:url" content="http://yoursite.com/2018/03/30/transition/index.html">
 <meta property="og:site_name" content="随记">
-<meta property="og:description" content="一、什么是补间动画？补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。 二、动画的属性1234transition-propertytransition-durationtransition-timing-functiontransition-delay transition-property属性transi">
+<meta property="og:description" content="一、什么是补间动画？补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。 二、transition的属性1234transition-propertytransition-durationtransition-timing-functiontransition-delay transition-property">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T09:04:02.000Z">
+<meta property="og:updated_time" content="2018-03-30T09:24:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3补间动画-transition">
-<meta name="twitter:description" content="一、什么是补间动画？补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。 二、动画的属性1234transition-propertytransition-durationtransition-timing-functiontransition-delay transition-property属性transi">
+<meta name="twitter:description" content="一、什么是补间动画？补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。 二、transition的属性1234transition-propertytransition-durationtransition-timing-functiontransition-delay transition-property">
 
 
 
@@ -388,7 +388,7 @@
 
       
         <h3 id="一、什么是补间动画？"><a href="#一、什么是补间动画？" class="headerlink" title="一、什么是补间动画？"></a>一、什么是补间动画？</h3><p>补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。</p>
-<h3 id="二、动画的属性"><a href="#二、动画的属性" class="headerlink" title="二、动画的属性"></a>二、动画的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transition-property</span><br><span class="line">transition-duration</span><br><span class="line">transition-timing-function</span><br><span class="line">transition-delay</span><br></pre></td></tr></table></figure>
+<h3 id="二、transition的属性"><a href="#二、transition的属性" class="headerlink" title="二、transition的属性"></a>二、transition的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transition-property</span><br><span class="line">transition-duration</span><br><span class="line">transition-timing-function</span><br><span class="line">transition-delay</span><br></pre></td></tr></table></figure>
 <h4 id="transition-property属性"><a href="#transition-property属性" class="headerlink" title="transition-property属性"></a>transition-property属性</h4><p><code>transition-property</code>规定设置过渡效果的 CSS 属性的名称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  transition-property: all ｜ none | property;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">all 默认值，所有属性都将获得过渡效果。</span><br><span class="line">none  没有属性会获得过渡效果。</span><br><span class="line">property  定义应用过渡效果的 CSS 属性名称列表，列表以逗号分隔。</span><br></pre></td></tr></table></figure>
 <p>不是所有的css属性都支持transition动画，不支持的属性如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">background-images //a.jpg -&gt; b.jpg</span><br><span class="line"><span class="built_in">float</span> //none -&gt; left</span><br><span class="line">width/height //auto -&gt; 100px(不支持)，10px -&gt; 100px(支持)</span><br><span class="line">display //none -&gt;block</span><br><span class="line">visibility //hidden -&gt; visible</span><br><span class="line">position // static -&gt; absolute</span><br></pre></td></tr></table></figure></p>
@@ -457,6 +457,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/30/animation/" rel="prev" title="css3帧动画-animation">
+                css3帧动画-animation <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -528,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -550,7 +554,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -585,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是补间动画？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是补间动画？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、动画的属性"><span class="nav-number">2.</span> <span class="nav-text">二、动画的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-property属性"><span class="nav-number">2.1.</span> <span class="nav-text">transition-property属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-duration属性"><span class="nav-number">2.2.</span> <span class="nav-text">transition-duration属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-timing-function属性"><span class="nav-number">2.3.</span> <span class="nav-text">transition-timing-function属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-delay属性"><span class="nav-number">2.4.</span> <span class="nav-text">transition-delay属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-属性"><span class="nav-number">2.5.</span> <span class="nav-text">transition 属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是补间动画？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是补间动画？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、transition的属性"><span class="nav-number">2.</span> <span class="nav-text">二、transition的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-property属性"><span class="nav-number">2.1.</span> <span class="nav-text">transition-property属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-duration属性"><span class="nav-number">2.2.</span> <span class="nav-text">transition-duration属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-timing-function属性"><span class="nav-number">2.3.</span> <span class="nav-text">transition-timing-function属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-delay属性"><span class="nav-number">2.4.</span> <span class="nav-text">transition-delay属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-属性"><span class="nav-number">2.5.</span> <span class="nav-text">transition 属性</span></a></li></ol></li></ol></div>
             
 
           </div>
