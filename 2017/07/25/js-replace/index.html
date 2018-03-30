@@ -93,25 +93,18 @@
 
 
 
-<meta name="description" content="使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：
-
-12345//替换第一个astring.replace(&apos;a&apos;,&apos;b&apos;)//替换全部astring.replace(/a/g,&apos;b&apos;)&amp;#125;)
-但是我的后台分测">
+<meta name="description" content="使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：  12345//替换第一个astring.replace(&apos;a&apos;,&apos;b&apos;)//替换全部astring.replace(/a/g,&apos;b&apos;)&amp;#125;) 但是我的后台分测">
+<meta name="keywords" content="javascript,replace">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js replace方法替换变量">
 <meta property="og:url" content="http://yoursite.com/2017/07/25/js-replace/index.html">
 <meta property="og:site_name" content="随记">
-<meta property="og:description" content="使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：
-
-12345//替换第一个astring.replace(&apos;a&apos;,&apos;b&apos;)//替换全部astring.replace(/a/g,&apos;b&apos;)&amp;#125;)
-但是我的后台分测">
+<meta property="og:description" content="使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：  12345//替换第一个astring.replace(&apos;a&apos;,&apos;b&apos;)//替换全部astring.replace(/a/g,&apos;b&apos;)&amp;#125;) 但是我的后台分测">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-07-25T08:08:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js replace方法替换变量">
-<meta name="twitter:description" content="使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：
-
-12345//替换第一个astring.replace(&apos;a&apos;,&apos;b&apos;)//替换全部astring.replace(/a/g,&apos;b&apos;)&amp;#125;)
-但是我的后台分测">
+<meta name="twitter:description" content="使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：  12345//替换第一个astring.replace(&apos;a&apos;,&apos;b&apos;)//替换全部astring.replace(/a/g,&apos;b&apos;)&amp;#125;) 但是我的后台分测">
 
 
 
@@ -397,10 +390,10 @@
         <blockquote>
 <p>使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//替换第一个a</div><div class="line">string.replace(<span class="string">'a'</span>,<span class="string">'b'</span>)</div><div class="line">//替换全部a</div><div class="line">string.replace(/a/g,<span class="string">'b'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>但是我的后台分测试服务器及线上服务器，所有需要替换的值是一个变量:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var host = <span class="string">'www.a.com'</span></div><div class="line">string.replace(host,<span class="string">'b'</span>)</div></pre></td></tr></table></figure></p>
-<p>这样写，可以替换第一个，到那时无法替换全部，然后改成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var host = <span class="string">'www.a.com'</span></div><div class="line">string.replace(/host/g,<span class="string">'b'</span>)</div></pre></td></tr></table></figure></p>
-<p>这样写，无法替换，解决方法为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var host = <span class="string">'www.a.com'</span></div><div class="line">string.replace(new RegExp(host,<span class="string">'g'</span>),<span class="string">'b'</span>)</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//替换第一个a</span><br><span class="line">string.replace(<span class="string">'a'</span>,<span class="string">'b'</span>)</span><br><span class="line">//替换全部a</span><br><span class="line">string.replace(/a/g,<span class="string">'b'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>但是我的后台分测试服务器及线上服务器，所有需要替换的值是一个变量:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(host,<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这样写，可以替换第一个，到那时无法替换全部，然后改成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(/host/g,<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这样写，无法替换，解决方法为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(new RegExp(host,<span class="string">'g'</span>),<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
