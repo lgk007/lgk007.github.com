@@ -301,6 +301,832 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/es6-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/19/es6-4/" itemprop="url">map数据结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T15:52:55+08:00">
+                2018-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="创建map"><a href="#创建map" class="headerlink" title="创建map"></a>创建map</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([</span><br><span class="line">    [<span class="string">'a'</span>,1],</span><br><span class="line">    [<span class="string">'b'</span>,2]</span><br><span class="line">])</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p6.png">
+
+<h3 id="map的属性"><a href="#map的属性" class="headerlink" title="map的属性"></a>map的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.size) //2</span><br></pre></td></tr></table></figure>
+<h3 id="map的方法"><a href="#map的方法" class="headerlink" title="map的方法"></a>map的方法</h3><h4 id="1-map-set-key-value-设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key"><a href="#1-map-set-key-value-设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key" class="headerlink" title="1.map.set(key,value),设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key"></a>1.map.set(key,value),设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.set(<span class="string">'three'</span>,3)</span><br><span class="line">a.set(<span class="string">'four'</span>,4).set(<span class="string">'five'</span>,5)</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p7.png">
+
+<h4 id="2-map-get-key-获取key对应的value值，如果没有，返回undefined"><a href="#2-map-get-key-获取key对应的value值，如果没有，返回undefined" class="headerlink" title="2.map.get(key),获取key对应的value值，如果没有，返回undefined"></a>2.map.get(key),获取key对应的value值，如果没有，返回undefined</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.get(<span class="string">'one'</span>)) //1</span><br><span class="line">console.log(a.get(<span class="string">'three'</span>)) //undefined</span><br></pre></td></tr></table></figure>
+<h4 id="3-map-delete-key-删除某个key，成功返回true，失败返回false"><a href="#3-map-delete-key-删除某个key，成功返回true，失败返回false" class="headerlink" title="3.map.delete(key),删除某个key，成功返回true，失败返回false"></a>3.map.delete(key),删除某个key，成功返回true，失败返回false</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.delete(<span class="string">'one'</span>)) //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">//再次执行删除</span><br><span class="line">console.log(a.delete(<span class="string">'one'</span>)) //<span class="literal">false</span> 上面已经删除过了one,所有删除失败</span><br></pre></td></tr></table></figure>
+<h4 id="4-map-has-key-返回布尔值，表示key是否存在"><a href="#4-map-has-key-返回布尔值，表示key是否存在" class="headerlink" title="4.map.has(key),返回布尔值，表示key是否存在"></a>4.map.has(key),返回布尔值，表示key是否存在</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.has(<span class="string">'one'</span>)) //<span class="literal">true</span></span><br><span class="line">console.log(a.has(<span class="string">'three'</span>)) //<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-map-clear-，清空所有数据，没有返回"><a href="#5-map-clear-，清空所有数据，没有返回" class="headerlink" title="5.map.clear()，清空所有数据，没有返回"></a>5.map.clear()，清空所有数据，没有返回</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.clear()</span><br></pre></td></tr></table></figure>
+<h4 id="6-set-keys-返回key的遍历器"><a href="#6-set-keys-返回key的遍历器" class="headerlink" title="6.set.keys()返回key的遍历器"></a>6.set.keys()返回key的遍历器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.keys()</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p8.png">
+
+<h4 id="6-set-values-返回value的遍历器"><a href="#6-set-values-返回value的遍历器" class="headerlink" title="6.set.values()返回value的遍历器"></a>6.set.values()返回value的遍历器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.values()</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p9.png">
+
+<h4 id="6-set-entries-返回键值对的便利器"><a href="#6-set-entries-返回键值对的便利器" class="headerlink" title="6.set.entries()返回键值对的便利器"></a>6.set.entries()返回键值对的便利器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.entries()</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p10.png">
+
+<h4 id="7-set-forEach-使用回调函数遍历每个成员"><a href="#7-set-forEach-使用回调函数遍历每个成员" class="headerlink" title="7.set.forEach()使用回调函数遍历每个成员"></a>7.set.forEach()使用回调函数遍历每个成员</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.forEach(<span class="keyword">function</span>(value,key,map)&#123;</span><br><span class="line">    console.log(value,key,map)//有3个参数</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p11.png">
+</image></image></image></image></image></image>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/es6-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/19/es6-3/" itemprop="url">set数据结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T15:02:02+08:00">
+                2018-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="创建set"><a href="#创建set" class="headerlink" title="创建set"></a>创建set</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Set();</span><br><span class="line"></span><br><span class="line">const a = new Set([1,2,3])//可以传参数</span><br></pre></td></tr></table></figure>
+<h3 id="set的属性-返回set数据里的个数"><a href="#set的属性-返回set数据里的个数" class="headerlink" title="set的属性,返回set数据里的个数"></a>set的属性,返回set数据里的个数</h3><p>console.log(a.size) //3</p>
+<h3 id="set的方法"><a href="#set的方法" class="headerlink" title="set的方法"></a>set的方法</h3><h4 id="1-set-add-value-添加一个数据，返回set本身结构-可以链式添加"><a href="#1-set-add-value-添加一个数据，返回set本身结构-可以链式添加" class="headerlink" title="1.set.add(value)添加一个数据，返回set本身结构,可以链式添加"></a>1.set.add(value)添加一个数据，返回set本身结构,可以链式添加</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a.add(4);</span><br><span class="line">console.log(a) //1,2,3,4</span><br><span class="line"></span><br><span class="line">a.add(5).add(6).add(7);</span><br><span class="line">console.log(a) //1,2,3,4,5,6,7</span><br></pre></td></tr></table></figure>
+<h4 id="2-set-delete-value-删除指定数据，返回一个布尔值，表示是否删除成功"><a href="#2-set-delete-value-删除指定数据，返回一个布尔值，表示是否删除成功" class="headerlink" title="2.set.delete(value)删除指定数据，返回一个布尔值，表示是否删除成功"></a>2.set.delete(value)删除指定数据，返回一个布尔值，表示是否删除成功</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.delete(1)); //<span class="literal">true</span></span><br><span class="line">console.log(a) //2,3,4,5,6,7</span><br><span class="line"></span><br><span class="line">//再次执行删除</span><br><span class="line">console.log(a.delete(1)); //<span class="literal">false</span> 上面已经删除过了1,所有删除失败</span><br></pre></td></tr></table></figure>
+<h4 id="3-set-has-value-判断set数据里是否包含改值，返回一个布尔值"><a href="#3-set-has-value-判断set数据里是否包含改值，返回一个布尔值" class="headerlink" title="3.set.has(value)判断set数据里是否包含改值，返回一个布尔值"></a>3.set.has(value)判断set数据里是否包含改值，返回一个布尔值</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.has(1)); //<span class="literal">false</span></span><br><span class="line">console.log(a.has(2)); //<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-set-clear-清楚结构中所有的数据，没有返回"><a href="#4-set-clear-清楚结构中所有的数据，没有返回" class="headerlink" title="4.set.clear()清楚结构中所有的数据，没有返回"></a>4.set.clear()清楚结构中所有的数据，没有返回</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.clear()</span><br><span class="line">console.log(a) //被清空</span><br></pre></td></tr></table></figure>
+<h4 id="5-set-keys-和set-values-返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的"><a href="#5-set-keys-和set-values-返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的" class="headerlink" title="5.set.keys()和set.values() 返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的"></a>5.set.keys()和set.values() 返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const b = new Set([1,2,3]);</span><br><span class="line">b.keys()</span><br><span class="line">b.value()</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p2.png">
+
+<h4 id="6-set-entries-返回键值对的便利器"><a href="#6-set-entries-返回键值对的便利器" class="headerlink" title="6.set.entries()返回键值对的便利器"></a>6.set.entries()返回键值对的便利器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const c = new Set([1,2,3]);</span><br><span class="line">c.entries()</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p3.png">
+
+<h4 id="7-set-forEach-使用回调函数遍历每个成员"><a href="#7-set-forEach-使用回调函数遍历每个成员" class="headerlink" title="7.set.forEach()使用回调函数遍历每个成员"></a>7.set.forEach()使用回调函数遍历每个成员</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const d = new Set([1,2,3,4])</span><br><span class="line">d.forEach(<span class="keyword">function</span>(value,key,<span class="built_in">set</span>)&#123;</span><br><span class="line">    console.log(value,key,<span class="built_in">set</span>)//有3个参数</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p4.png">
+
+<h4 id="set不允许有重复的数据"><a href="#set不允许有重复的数据" class="headerlink" title="set不允许有重复的数据"></a>set不允许有重复的数据</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const d = new Set([1,2,3,4])</span><br><span class="line">d.add(4)</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p5.png">
+
+</image></image></image></image>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/es6-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/19/es6-2/" itemprop="url">变量的解析赋值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T11:36:02+08:00">
+                2018-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="数组的结构赋值"><a href="#数组的结构赋值" class="headerlink" title="数组的结构赋值"></a>数组的结构赋值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = 1;</span><br><span class="line"><span class="built_in">let</span> b = 2;</span><br><span class="line"><span class="built_in">let</span> c = 3;</span><br><span class="line">console.log(a,b,c) //1,2,3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a,b,c] = [1,2,3]</span><br><span class="line">console.log(a,b,c) //1,2,3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span>[a,[[b],c]] = [1,[[2],3]];</span><br><span class="line">console.log(a,b,c) //1,2,3 匹配对等的值</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [,,c] = [1,2,3]</span><br><span class="line">console.log(c) //3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a] = [];</span><br><span class="line">console.log(a) //undefined</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a = 1] = [];</span><br><span class="line">console.log(a) //1,默认赋值</span><br></pre></td></tr></table></figure>
+<h3 id="对象的结构赋值"><a href="#对象的结构赋值" class="headerlink" title="对象的结构赋值"></a>对象的结构赋值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> &#123;a,b&#125; = &#123;b : 1,a : 2&#125;;</span><br><span class="line">console.log(a,b) //2,1</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> &#123;a : b&#125; = &#123;a : 1&#125;</span><br><span class="line">console.log(b) //1</span><br><span class="line">console.log(a) //a is not defined</span><br></pre></td></tr></table></figure>
+<h3 id="基本类型的结构赋值"><a href="#基本类型的结构赋值" class="headerlink" title="基本类型的结构赋值"></a>基本类型的结构赋值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> [a,b,c] = <span class="string">'1,2,3'</span>;</span><br><span class="line">console.log(a,b,c) //1,2,3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> &#123;toString : ts&#125; = 1;</span><br><span class="line"><span class="built_in">let</span> &#123;toString : bs&#125; = <span class="literal">true</span>;</span><br><span class="line">console.log(ts === Number.prototype.toString) //<span class="literal">true</span></span><br><span class="line">console.log(ts === Boolean.prototype.toString) //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> &#123;length : len&#125; = <span class="string">'liuguangkuo'</span></span><br><span class="line">console.log(len) //11</span><br><span class="line"></span><br><span class="line">null和undefined不能进行结构赋值</span><br><span class="line"><span class="built_in">let</span> [a] = null //错误</span><br><span class="line"><span class="built_in">let</span> [b] = undefined //错误</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/es6-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/19/es6-1/" itemprop="url">es6 let和const</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T10:19:04+08:00">
+                2018-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="let的使用"><a href="#let的使用" class="headerlink" title="let的使用"></a>let的使用</h3><h4 id="1-使用let声明的变量只在命令所在的代码块内有效"><a href="#1-使用let声明的变量只在命令所在的代码块内有效" class="headerlink" title="1.使用let声明的变量只在命令所在的代码块内有效"></a>1.使用let声明的变量只在命令所在的代码块内有效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="built_in">let</span> a = 1;</span><br><span class="line">    var b = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(a) // a is not defined</span><br><span class="line">console.log(b) // 2</span><br></pre></td></tr></table></figure>
+<h4 id="2-使用let声明的变量在域解析的时候不会被提升"><a href="#2-使用let声明的变量在域解析的时候不会被提升" class="headerlink" title="2.使用let声明的变量在域解析的时候不会被提升"></a>2.使用let声明的变量在域解析的时候不会被提升</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.log(a) //a is not defined</span><br><span class="line"><span class="built_in">let</span> a = 1;</span><br><span class="line"></span><br><span class="line">console.log(b) //undefined</span><br><span class="line">var b = 2;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> c = 3;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>()&#123;</span><br><span class="line">    c = 10; //c is not defined(暂时性死去)</span><br><span class="line">    <span class="built_in">let</span> c = 20;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>()</span><br></pre></td></tr></table></figure>
+<h4 id="3-let不允许在同一个作用域下声明已经声明过的变量"><a href="#3-let不允许在同一个作用域下声明已经声明过的变量" class="headerlink" title="3.let不允许在同一个作用域下声明已经声明过的变量"></a>3.let不允许在同一个作用域下声明已经声明过的变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 0;</span><br><span class="line"><span class="built_in">let</span> a = 1; //错误</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> b = 0;</span><br><span class="line"><span class="built_in">let</span> b = 1;//错误</span><br></pre></td></tr></table></figure>
+<h4 id="4-let在for循环中的使用"><a href="#4-let在for循环中的使用" class="headerlink" title="4.let在for循环中的使用"></a>4.let在for循环中的使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;4&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;5&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">var lis = document.querySelectorAll(<span class="string">'li'</span>);</span><br><span class="line"><span class="keyword">for</span>(var i = 0;i &lt; lis.length;i++)&#123;</span><br><span class="line">    lis[i].onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        console.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">返回结果：</span><br><span class="line">点击后console的结果都是5</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0;i &lt; lis.length;i++)&#123;</span><br><span class="line">    lis[i].onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        console.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">返回结果：</span><br><span class="line">console.log(0)</span><br><span class="line">console.log(1)</span><br><span class="line">console.log(2)</span><br><span class="line">console.log(3)</span><br><span class="line">console.log(4)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0;i &lt; 3;i++)&#123;</span><br><span class="line">    <span class="built_in">let</span> i = 10;</span><br><span class="line">    console.log(i)</span><br><span class="line">&#125;</span><br><span class="line">console.log(i)</span><br><span class="line"></span><br><span class="line">返回结果：</span><br><span class="line">3次10</span><br><span class="line">i is not defined</span><br></pre></td></tr></table></figure>
+<h3 id="const的使用"><a href="#const的使用" class="headerlink" title="const的使用"></a>const的使用</h3><p>const具备和let的1、2、3条特点，1，常量只在命令所在的代码块内有效、2，常量在域解析的时候不会被提升、3，不能同一个作用域下声明已经声明过的常量</p>
+<h4 id="1-声明的时候必须赋值"><a href="#1-声明的时候必须赋值" class="headerlink" title="1.声明的时候必须赋值"></a>1.声明的时候必须赋值</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br><span class="line"><span class="built_in">let</span> b;</span><br><span class="line">const c;//错误</span><br></pre></td></tr></table></figure>
+<h4 id="2-声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。"><a href="#2-声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。" class="headerlink" title="2.声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。"></a>2.声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const a = 1;</span><br><span class="line">a = <span class="string">'1'</span>// 错误</span><br><span class="line"></span><br><span class="line">const obj = &#123;b : 20&#125;</span><br><span class="line">obj.b = 200;</span><br><span class="line">console.log(obj.b) // 200</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/nodeType/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/18/nodeType/" itemprop="url">javascript DOM节点类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T10:22:14+08:00">
+                2018-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScript中所有HTML DOM节点类型都继承自Node类型，因此所有类型的节点都有一些相同的属性和方法。Node接口是DOM1级中定义的一个接口，在JavaScript中Node接口被实现为Node类型。</p>
+<p>每个节点都有nodeType属性，该属性表示节点类型。在浏览器使用<code>console.dir(Node)</code>查看：</p>
+<image src="/2018/4-18/p1.png">
+
+<p>这些类型中，有些节点可以包含子节点，有些没有子节点，详细如下：</p>
+<table>
+<thead>
+<tr>
+<th>节点类型</th>
+<th>描述</th>
+<th>子节点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>代表元素</td>
+<td>Element, Text, Comment, ProcessingInstruction, CDATASection, EntityReference</td>
+</tr>
+<tr>
+<td>Attr</td>
+<td>代表属性</td>
+<td>Text, EntityReference</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>代表元素或属性中的文本内容</td>
+<td>None</td>
+</tr>
+<tr>
+<td>CDATASection</td>
+<td>代表文档中的 CDATA 部<br>（不会由解析器解析的文本）</td>
+<td>None</td>
+</tr>
+<tr>
+<td>EntityReference</td>
+<td>代表实体引用</td>
+<td>Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference</td>
+</tr>
+<tr>
+<td>Entity</td>
+<td>代表实体</td>
+<td>Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference</td>
+</tr>
+<tr>
+<td>ProcessingInstruction</td>
+<td>代表处理指令</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Comment</td>
+<td>代表注释</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>整个文档，DOM树</td>
+<td>Element, ProcessingInstruction, Comment, DocumentType</td>
+</tr>
+<tr>
+<td>DocumentType</td>
+<td>向为文档定义的实体提供接口</td>
+<td>None</td>
+</tr>
+<tr>
+<td>DocumentFragment</td>
+<td>代表轻量级的 Document 对象（文档的某个部分）</td>
+<td>Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference</td>
+</tr>
+<tr>
+<td>Notation</td>
+<td>代表 DTD 中声明的符号</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用节点类型"><a href="#常用节点类型" class="headerlink" title="常用节点类型"></a>常用节点类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>常量</th>
+<th>nodeType</th>
+<th>nodeName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element类型</td>
+<td>ELEMENT_NODE</td>
+<td>1</td>
+<td>元素的标签名</td>
+</tr>
+<tr>
+<td>Text类型</td>
+<td>TEXT_NODE</td>
+<td>3</td>
+<td>#text</td>
+</tr>
+<tr>
+<td>Document类型</td>
+<td>DOCUMENT_NODE</td>
+<td>9</td>
+<td>#document</td>
+</tr>
+<tr>
+<td>DocumentFragment类型</td>
+<td>DOCUMENT<br>FRAGMENT_NODE</td>
+<td>11</td>
+<td>#document-fragment</td>
+</tr>
+</tbody>
+</table>
+</image>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/animation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -391,9 +1217,11 @@
       
         
           <h3 id="一、什么是帧动画？"><a href="#一、什么是帧动画？" class="headerlink" title="一、什么是帧动画？"></a>一、什么是帧动画？</h3><p>前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。</p>
-<h3 id="二、animation的属性"><a href="#二、animation的属性" class="headerlink" title="二、animation的属性"></a>二、animation的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">animation-name  规定需要绑定到选择器的 keyframe 名称。。</span><br><span class="line">animation-duration  规定完成动画所花费的时间，以秒或毫秒计。</span><br><span class="line">animation-timing-function   规定动画的速度曲线。</span><br><span class="line">animation-delay 规定在动画开始之前的延迟。</span><br><span class="line">animation-iteration-count   规定动画应该播放的次数。</span><br><span class="line">animation-direction 规定是否应该轮流反向播放动画。</span><br></pre></td></tr></table></figure>
+<h3 id="二、animation的属性"><a href="#二、animation的属性" class="headerlink" title="二、animation的属性"></a>二、animation的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">animation-name  规定需要绑定到选择器的 keyframe 名称。。</span><br><span class="line">animation-duration  规定完成动画所花费的时间，以秒或毫秒计。</span><br><span class="line">animation-timing-function   规定动画的速度曲线。</span><br><span class="line">animation-delay 规定在动画开始之前的延迟。</span><br><span class="line">animation-iteration-count   规定动画应该播放的次数。</span><br><span class="line">animation-direction 规定是否应该轮流反向播放动画。</span><br><span class="line">animation-fill-mode 规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式</span><br><span class="line">animation-play-state 指定动画是否正在运行或已暂停。</span><br></pre></td></tr></table></figure>
 <h4 id="animation-name属性"><a href="#animation-name属性" class="headerlink" title="animation-name属性"></a>animation-name属性</h4><p><code>animation-name</code>规定需要绑定到选择器的 keyframe 名称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-name: keyframe | none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keyframe    规定需要绑定到选择器的 keyframe 的名称。</span><br><span class="line">none    规定无动画效果（可用于覆盖来自级联的动画）。</span><br></pre></td></tr></table></figure>
+<p>keyframe语法:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@keyframes changeBg &#123;</span><br><span class="line">  0% &#123; background: <span class="comment">#c00; &#125;</span></span><br><span class="line">  50% &#123; background: orange; &#125;</span><br><span class="line">  100% &#123; background: yellowgreen; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码表示，changeBg效果一共有三个状态，分别为起始（0%）、中点（50%）和结束（100%）。如果有需要，完全可以插入更多状态。</p>
 <h4 id="animation-duration属性"><a href="#animation-duration属性" class="headerlink" title="animation-duration属性"></a>animation-duration属性</h4><p><code>animation-duration</code>规定完成动画所花费的时间，以秒或毫秒计。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-duration: time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time 规定完成动画所花费的时间。默认值是 0，意味着没有动画效果。</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -1134,709 +1962,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/25/js-replace/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/25/js-replace/" itemprop="url">js replace方法替换变量</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-25T15:51:17+08:00">
-                2017-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//替换第一个a</span><br><span class="line">string.replace(<span class="string">'a'</span>,<span class="string">'b'</span>)</span><br><span class="line">//替换全部a</span><br><span class="line">string.replace(/a/g,<span class="string">'b'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>但是我的后台分测试服务器及线上服务器，所有需要替换的值是一个变量:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(host,<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>这样写，可以替换第一个，到那时无法替换全部，然后改成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(/host/g,<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>这样写，无法替换，解决方法为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(new RegExp(host,<span class="string">'g'</span>),<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/express-excel/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/21/express-excel/" itemprop="url">node-express生成Excel文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T16:32:14+08:00">
-                2017-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>自从公司开通了商城后，时常要查看每天的销售情况，又因为货都是供应商发送，需要提供每天的订单信息给到供应商，所有需要发每天的数据生产一个excel文件。</p>
-</blockquote>
-<p>使用的是<code>excel-export</code>模块，下面介绍使用方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install excel-export</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">var nodeExcel = require(<span class="string">'excel-export'</span>);</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/downloadExcel'</span>,<span class="keyword">function</span>(req,res)&#123;</span><br><span class="line">    var tabelHead = [&#123;</span><br><span class="line">	      caption:<span class="string">'用户id'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'购买渠道'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'商品id'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'商品名称'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'收货人'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'手机号码'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'地址'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'备注'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'快递单号'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'资料填写时间'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'订单时间'</span></span><br><span class="line">	  &#125;,&#123;</span><br><span class="line">	      caption:<span class="string">'价格'</span></span><br><span class="line">	  &#125;</span><br><span class="line">	];</span><br><span class="line">    request.post(&#123;url:<span class="string">'地址'</span>, form: &#123;&#125;&#125;, <span class="keyword">function</span>(err,httpResponse,body)&#123;</span><br><span class="line">        var arrBox = [];</span><br><span class="line">        var result = JSON.parse(body);</span><br><span class="line">        <span class="keyword">for</span>(var i = 0;i &lt; result.data.length;i++)&#123;</span><br><span class="line">            var arr = [];</span><br><span class="line">            <span class="keyword">for</span>(j <span class="keyword">in</span> result.data[i])&#123;</span><br><span class="line">                var val = result.data[i][j]</span><br><span class="line">                arr.push(val)</span><br><span class="line">            &#125;</span><br><span class="line">            arrBox.push(arr)</span><br><span class="line">        &#125;</span><br><span class="line">        var configuration = &#123;&#125;;</span><br><span class="line">        configuration.cols= tabelHead; //标题</span><br><span class="line">        configuration.rows  = arrBox; //内容</span><br><span class="line">        var result=nodeExcel.execute(configuration);</span><br><span class="line">        res.setHeader(<span class="string">'Content-Type'</span>,<span class="string">'application/vnd.openxmlformates'</span>);</span><br><span class="line">        res.setHeader(<span class="string">"Content-Disposition"</span>,<span class="string">"attachment;filename="</span>+<span class="string">"file_name.xlsx"</span>);</span><br><span class="line">        res.end(result,<span class="string">'binary'</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>效果如下：<br><img src="/images/2017-7/excel-1.png"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/19/bootstrap-datetimepicker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/19/bootstrap-datetimepicker/" itemprop="url">bootstrap datetimepicker浏览器卡死</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T16:36:02+08:00">
-                2017-07-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/bootstrap/" itemprop="url" rel="index">
-                    <span itemprop="name">bootstrap</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>最近在做后台系统文章管理的时候遇到了个小问题，后台采用bootstrap搭建，然后里面有个需求需要用到时间控件，所有使用了datetimepicker，然后出现了多个选择框的时候，浏览器卡死的问题，具体如下：</p>
-</blockquote>
-<p>文章列表页面需要给单个文章修改上架时间的功能，在页面初始化加载的时候，运行了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.demo'</span>).datetimepicker(&#123;</span><br><span class="line">	format: <span class="string">'yyyy-mm-dd hh:ii:ss'</span>,</span><br><span class="line">	language: <span class="string">'zh-CN'</span>,</span><br><span class="line">	todayHighlight : <span class="literal">true</span>,</span><br><span class="line">	autoclose : <span class="literal">true</span>,</span><br><span class="line">	todayBtn: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="第一个问题："><a href="#第一个问题：" class="headerlink" title="第一个问题："></a>第一个问题：</h3><p>当翻页的时候，新加载的<code>input</code>没有得到渲染，所有选择没有效果。</p>
-<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><p>要在<code>ajax</code>的<code>success</code>重新渲染列表后重新再一次的初始化<code>input</code>。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/19/bootstrap-datetimepicker/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/fit-editor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/13/fit-editor/" itemprop="url">ueditor自定义弹出框</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-13T09:41:35+08:00">
-                2017-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>最近公司产品上线了商城模块，为了方便推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 </p>
-</blockquote>
-<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>找到<code>ueditor.config.js</code>文件中的toolbars的数组，增加一个<code>mydialog</code>,然后找到<code>labelMap</code>对象，添加<code>&#39;mydialog&#39;:&#39;测试&#39;</code>,如果不需要全局也可以对单独文件添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var ue = UE.getEditor(<span class="string">'container'</span>,&#123;</span><br><span class="line">    toolbars: [</span><br><span class="line">        [<span class="string">'source'</span>, <span class="string">'undo'</span>, <span class="string">'redo'</span>, <span class="string">'bold'</span>,<span class="string">'link'</span>,<span class="string">'unlink'</span>,<span class="string">'simpleupload'</span>,<span class="string">'insertimage'</span>,<span class="string">'fontsize'</span>,<span class="string">'paragraph'</span>,<span class="string">'forecolor'</span>,<span class="string">'mydialog'</span>]</span><br><span class="line">    ],</span><br><span class="line">    labelMap : &#123;</span><br><span class="line">    	<span class="string">'mydialog'</span> : <span class="string">'测试'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>找到<code>dialogs</code>文件，新建<code>mydialog</code>文件夹，然后在文件夹里新建<code>mydialog.html</code>文件，这个文件自定义页面的代码，任何编辑修改都在这里，如参考<code>ling/link.html</code>文件。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/13/fit-editor/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/05/regexp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/05/regexp/" itemprop="url">整理常用正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-05T10:31:24+08:00">
-                2017-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/正则/" itemprop="url" rel="index">
-                    <span itemprop="name">正则</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="校验数字的表达式"><a href="#校验数字的表达式" class="headerlink" title="校验数字的表达式"></a>校验数字的表达式</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">数字：^[0-9]*$</span><br><span class="line">n位的数字：^\d&#123;n&#125;$</span><br><span class="line">至少n位的数字：^\d&#123;n,&#125;$</span><br><span class="line">m-n位的数字：^\d&#123;m,n&#125;$</span><br><span class="line">零和非零开头的数字：^(0|[1-9][0-9]*)$</span><br><span class="line">非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]&#123;1,2&#125;)?$</span><br><span class="line">带1-2位小数的正数或负数：^(\-)?\d+(\.\d&#123;1,2&#125;)?$</span><br><span class="line">正数、负数、和小数：^(\-|\+)?\d+(\.\d+)?$</span><br><span class="line">有两位小数的正实数：^[0-9]+(.[0-9]&#123;2&#125;)?$</span><br><span class="line">有1~3位小数的正实数：^[0-9]+(.[0-9]&#123;1,3&#125;)?$</span><br><span class="line">非零的正整数：^[1-9]\d*$ 或 ^([1-9][0-9]*)&#123;1,3&#125;$ 或 ^\+?[1-9][0-9]*$</span><br><span class="line">非零的负整数：^\-[1-9][]0-9"*$ 或 ^-[1-9]\d*$</span><br><span class="line">非负整数：^\d+$ 或 ^[1-9]\d*|0$</span><br><span class="line">非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$</span><br><span class="line">非负浮点数：^\d+(\.\d+)?$ 或 ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$</span><br><span class="line">非正浮点数：^((-\d+(\.\d+)?)|(0+(\.0+)?))$ 或 ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$</span><br><span class="line">正浮点数：^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$ 或 ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$</span><br><span class="line">负浮点数：^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$ 或 ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$</span><br><span class="line">浮点数：^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/05/regexp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1886,7 +2011,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1897,7 +2022,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1908,7 +2033,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

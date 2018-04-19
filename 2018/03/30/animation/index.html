@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
+<meta name="description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性12345678animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
 <meta name="keywords" content="css3,动画,animation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css3帧动画-animation">
 <meta property="og:url" content="http://yoursite.com/2018/03/30/animation/index.html">
 <meta property="og:site_name" content="随记">
-<meta property="og:description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
+<meta property="og:description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性12345678animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T10:10:29.000Z">
+<meta property="og:updated_time" content="2018-03-30T10:34:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3帧动画-animation">
-<meta name="twitter:description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
+<meta name="twitter:description" content="一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性12345678animation-name  规定需要绑定到选择器的 keyframe 名称。。animation-duration  规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function">
 
 
 
@@ -388,9 +388,11 @@
 
       
         <h3 id="一、什么是帧动画？"><a href="#一、什么是帧动画？" class="headerlink" title="一、什么是帧动画？"></a>一、什么是帧动画？</h3><p>前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。</p>
-<h3 id="二、animation的属性"><a href="#二、animation的属性" class="headerlink" title="二、animation的属性"></a>二、animation的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">animation-name  规定需要绑定到选择器的 keyframe 名称。。</span><br><span class="line">animation-duration  规定完成动画所花费的时间，以秒或毫秒计。</span><br><span class="line">animation-timing-function   规定动画的速度曲线。</span><br><span class="line">animation-delay 规定在动画开始之前的延迟。</span><br><span class="line">animation-iteration-count   规定动画应该播放的次数。</span><br><span class="line">animation-direction 规定是否应该轮流反向播放动画。</span><br></pre></td></tr></table></figure>
+<h3 id="二、animation的属性"><a href="#二、animation的属性" class="headerlink" title="二、animation的属性"></a>二、animation的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">animation-name  规定需要绑定到选择器的 keyframe 名称。。</span><br><span class="line">animation-duration  规定完成动画所花费的时间，以秒或毫秒计。</span><br><span class="line">animation-timing-function   规定动画的速度曲线。</span><br><span class="line">animation-delay 规定在动画开始之前的延迟。</span><br><span class="line">animation-iteration-count   规定动画应该播放的次数。</span><br><span class="line">animation-direction 规定是否应该轮流反向播放动画。</span><br><span class="line">animation-fill-mode 规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式</span><br><span class="line">animation-play-state 指定动画是否正在运行或已暂停。</span><br></pre></td></tr></table></figure>
 <h4 id="animation-name属性"><a href="#animation-name属性" class="headerlink" title="animation-name属性"></a>animation-name属性</h4><p><code>animation-name</code>规定需要绑定到选择器的 keyframe 名称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-name: keyframe | none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keyframe    规定需要绑定到选择器的 keyframe 的名称。</span><br><span class="line">none    规定无动画效果（可用于覆盖来自级联的动画）。</span><br></pre></td></tr></table></figure>
+<p>keyframe语法:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@keyframes changeBg &#123;</span><br><span class="line">  0% &#123; background: <span class="comment">#c00; &#125;</span></span><br><span class="line">  50% &#123; background: orange; &#125;</span><br><span class="line">  100% &#123; background: yellowgreen; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码表示，changeBg效果一共有三个状态，分别为起始（0%）、中点（50%）和结束（100%）。如果有需要，完全可以插入更多状态。</p>
 <h4 id="animation-duration属性"><a href="#animation-duration属性" class="headerlink" title="animation-duration属性"></a>animation-duration属性</h4><p><code>animation-duration</code>规定完成动画所花费的时间，以秒或毫秒计。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-duration: time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time 规定完成动画所花费的时间。默认值是 0，意味着没有动画效果。</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -405,7 +407,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n   定义动画播放次数的数值。</span><br><span class="line">infinite    规定动画应该无限次播放。</span><br></pre></td></tr></table></figure>
 <h4 id="animation-direction属性"><a href="#animation-direction属性" class="headerlink" title="animation-direction属性"></a>animation-direction属性</h4><p><code>animation-direction</code>规定是否应该轮流反向播放动画。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-direction: normal | alternate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">normal  默认值。动画应该正常播放。</span><br><span class="line">alternate   动画应该轮流反向播放。</span><br></pre></td></tr></table></figure>
-<h4 id="animation-属性"><a href="#animation-属性" class="headerlink" title="animation 属性"></a>animation 属性</h4><p><code>transition</code>属性是<code>animation-name</code>, <code>animation-duration</code> , <code>animation-timing-function</code>, <code>animation-delay</code>, <code>animation-iteration-count</code> 和 <code>animation-direction</code>的简写，默认值为<code>none 0 ease 0 1 normal</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation: name duration timing-function delay iteration-count direction;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="animation-fill-mode属性"><a href="#animation-fill-mode属性" class="headerlink" title="animation-fill-mode属性"></a>animation-fill-mode属性</h4><p><code>animation-fill-mode</code>属性规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-fill-mode: none | forwards | backwards | both | initial | inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">none  默认值。动画在动画执行之前和之后不会应用任何样式到目标元素。</span><br><span class="line">forwards  在动画结束后,停留在结束的位置（由 animation-iteration-count 决定），动画将应用该属性值。</span><br><span class="line">backwards 让动画回到第一帧的状态。</span><br><span class="line">both  动画遵循 forwards 和 backwards 的规则。也就是说，动画会在两个方向上扩展动画属性。</span><br><span class="line">initial 设置该属性为它的默认值。请参阅 initial。</span><br><span class="line">inherit 从父元素继承该属性。请参阅 inherit。</span><br></pre></td></tr></table></figure>
+<h4 id="animation-direction属性-1"><a href="#animation-direction属性-1" class="headerlink" title="animation-direction属性"></a>animation-direction属性</h4><p><code>animation-direction</code>规定是否应该轮流反向播放动画。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation-direction: normal | alternate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">normal  默认值。动画应该正常播放。</span><br><span class="line">alternate   动画应该轮流反向播放。</span><br></pre></td></tr></table></figure>
+<h4 id="animation-属性"><a href="#animation-属性" class="headerlink" title="animation 属性"></a>animation 属性</h4><p><code>transition</code>属性是<code>animation-name</code>, <code>animation-duration</code> , <code>animation-timing-function</code>, <code>animation-delay</code>, <code>animation-iteration-count</code> , <code>animation-direction</code> , <code>animation-fill-mode</code>和  <code>animation-play-state</code>的简写，默认值为<code>none 0 ease 0 1 normal none running</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  animation: name duration timing-function delay iteration-count direction fill-mode play-state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </image>
       
     </div>
@@ -461,6 +467,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/18/nodeType/" rel="prev" title="javascript DOM节点类型">
+                javascript DOM节点类型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -532,7 +542,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -543,7 +553,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -554,7 +564,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -589,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是帧动画？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是帧动画？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、animation的属性"><span class="nav-number">2.</span> <span class="nav-text">二、animation的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-name属性"><span class="nav-number">2.1.</span> <span class="nav-text">animation-name属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-duration属性"><span class="nav-number">2.2.</span> <span class="nav-text">animation-duration属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-timing-function属性"><span class="nav-number">2.3.</span> <span class="nav-text">animation-timing-function属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-delay属性"><span class="nav-number">2.4.</span> <span class="nav-text">animation-delay属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-iteration-count属性"><span class="nav-number">2.5.</span> <span class="nav-text">animation-iteration-count属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-direction属性"><span class="nav-number">2.6.</span> <span class="nav-text">animation-direction属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-属性"><span class="nav-number">2.7.</span> <span class="nav-text">animation 属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是帧动画？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是帧动画？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、animation的属性"><span class="nav-number">2.</span> <span class="nav-text">二、animation的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-name属性"><span class="nav-number">2.1.</span> <span class="nav-text">animation-name属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-duration属性"><span class="nav-number">2.2.</span> <span class="nav-text">animation-duration属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-timing-function属性"><span class="nav-number">2.3.</span> <span class="nav-text">animation-timing-function属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-delay属性"><span class="nav-number">2.4.</span> <span class="nav-text">animation-delay属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-iteration-count属性"><span class="nav-number">2.5.</span> <span class="nav-text">animation-iteration-count属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-direction属性"><span class="nav-number">2.6.</span> <span class="nav-text">animation-direction属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-fill-mode属性"><span class="nav-number">2.7.</span> <span class="nav-text">animation-fill-mode属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-direction属性-1"><span class="nav-number">2.8.</span> <span class="nav-text">animation-direction属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation-属性"><span class="nav-number">2.9.</span> <span class="nav-text">animation 属性</span></a></li></ol></li></ol></div>
             
 
           </div>

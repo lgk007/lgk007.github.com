@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[map数据结构]]></title>
+    <url>%2F2018%2F04%2F19%2Fes6-4%2F</url>
+    <content type="text"><![CDATA[创建map12345const a = new Map([ ['a',1], ['b',2]])console.log(a) map的属性1console.log(a.size) //2 map的方法1.map.set(key,value),设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key123const a = new Map([['one',1],['two',2]])a.set('three',3)a.set('four',4).set('five',5) 2.map.get(key),获取key对应的value值，如果没有，返回undefined123const a = new Map([['one',1],['two',2]])console.log(a.get('one')) //1console.log(a.get('three')) //undefined 3.map.delete(key),删除某个key，成功返回true，失败返回false12345const a = new Map([['one',1],['two',2]])console.log(a.delete('one')) //true//再次执行删除console.log(a.delete('one')) //false 上面已经删除过了one,所有删除失败 4.map.has(key),返回布尔值，表示key是否存在123const a = new Map([['one',1],['two',2]])console.log(a.has('one')) //trueconsole.log(a.has('three')) //false 5.map.clear()，清空所有数据，没有返回12const a = new Map([['one',1],['two',2]])a.clear() 6.set.keys()返回key的遍历器12const a = new Map([['one',1],['two',2]])a.keys() 6.set.values()返回value的遍历器12const a = new Map([['one',1],['two',2]])a.values() 6.set.entries()返回键值对的便利器12const a = new Map([['one',1],['two',2]])a.entries() 7.set.forEach()使用回调函数遍历每个成员1234const a = new Map([['one',1],['two',2]])a.forEach(function(value,key,map)&#123; console.log(value,key,map)//有3个参数&#125;)]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>javascript</tag>
+        <tag>map</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[set数据结构]]></title>
+    <url>%2F2018%2F04%2F19%2Fes6-3%2F</url>
+    <content type="text"><![CDATA[创建set123const a = new Set();const a = new Set([1,2,3])//可以传参数 set的属性,返回set数据里的个数console.log(a.size) //3 set的方法1.set.add(value)添加一个数据，返回set本身结构,可以链式添加12345a.add(4);console.log(a) //1,2,3,4a.add(5).add(6).add(7);console.log(a) //1,2,3,4,5,6,7 2.set.delete(value)删除指定数据，返回一个布尔值，表示是否删除成功12345console.log(a.delete(1)); //trueconsole.log(a) //2,3,4,5,6,7//再次执行删除console.log(a.delete(1)); //false 上面已经删除过了1,所有删除失败 3.set.has(value)判断set数据里是否包含改值，返回一个布尔值12console.log(a.has(1)); //falseconsole.log(a.has(2)); //true 4.set.clear()清楚结构中所有的数据，没有返回12a.clear()console.log(a) //被清空 5.set.keys()和set.values() 返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的123const b = new Set([1,2,3]);b.keys()b.value() 6.set.entries()返回键值对的便利器12const c = new Set([1,2,3]);c.entries() 7.set.forEach()使用回调函数遍历每个成员1234const d = new Set([1,2,3,4])d.forEach(function(value,key,set)&#123; console.log(value,key,set)//有3个参数&#125;) set不允许有重复的数据12const d = new Set([1,2,3,4])d.add(4)]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>javascript</tag>
+        <tag>set</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[变量的解析赋值]]></title>
+    <url>%2F2018%2F04%2F19%2Fes6-2%2F</url>
+    <content type="text"><![CDATA[数组的结构赋值12345678910111213141516171819let a = 1;let b = 2;let c = 3;console.log(a,b,c) //1,2,3let [a,b,c] = [1,2,3]console.log(a,b,c) //1,2,3let[a,[[b],c]] = [1,[[2],3]];console.log(a,b,c) //1,2,3 匹配对等的值let [,,c] = [1,2,3]console.log(c) //3let [a] = [];console.log(a) //undefinedlet [a = 1] = [];console.log(a) //1,默认赋值 对象的结构赋值123456let &#123;a,b&#125; = &#123;b : 1,a : 2&#125;;console.log(a,b) //2,1let &#123;a : b&#125; = &#123;a : 1&#125;console.log(b) //1console.log(a) //a is not defined 基本类型的结构赋值1234567891011121314let [a,b,c] = '1,2,3';console.log(a,b,c) //1,2,3let &#123;toString : ts&#125; = 1;let &#123;toString : bs&#125; = true;console.log(ts === Number.prototype.toString) //trueconsole.log(ts === Boolean.prototype.toString) //truelet &#123;length : len&#125; = 'liuguangkuo'console.log(len) //11null和undefined不能进行结构赋值let [a] = null //错误let [b] = undefined //错误]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>let</tag>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[es6 let和const]]></title>
+    <url>%2F2018%2F04%2F19%2Fes6-1%2F</url>
+    <content type="text"><![CDATA[let的使用1.使用let声明的变量只在命令所在的代码块内有效123456&#123; let a = 1; var b = 2;&#125;console.log(a) // a is not definedconsole.log(b) // 2 2.使用let声明的变量在域解析的时候不会被提升123456789101112console.log(a) //a is not definedlet a = 1;console.log(b) //undefinedvar b = 2;let c = 3;function test()&#123; c = 10; //c is not defined(暂时性死去) let c = 20;&#125;test() 3.let不允许在同一个作用域下声明已经声明过的变量12345var a = 0;let a = 1; //错误let b = 0;let b = 1;//错误 4.let在for循环中的使用12345678910111213141516171819202122232425262728&lt;ul&gt; &lt;li&gt;1&lt;/li&gt; &lt;li&gt;2&lt;/li&gt; &lt;li&gt;3&lt;/li&gt; &lt;li&gt;4&lt;/li&gt; &lt;li&gt;5&lt;/li&gt;&lt;/ul&gt;var lis = document.querySelectorAll('li');for(var i = 0;i &lt; lis.length;i++)&#123; lis[i].onclick = function()&#123; console.log(i) &#125;&#125;返回结果：点击后console的结果都是5for(let i = 0;i &lt; lis.length;i++)&#123; lis[i].onclick = function()&#123; console.log(i) &#125;&#125;返回结果：console.log(0)console.log(1)console.log(2)console.log(3)console.log(4) 123456789for(let i = 0;i &lt; 3;i++)&#123; let i = 10; console.log(i)&#125;console.log(i)返回结果：3次10i is not defined const的使用const具备和let的1、2、3条特点，1，常量只在命令所在的代码块内有效、2，常量在域解析的时候不会被提升、3，不能同一个作用域下声明已经声明过的常量 1.声明的时候必须赋值123var a;let b;const c;//错误 2.声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。123456const a = 1;a = '1'// 错误const obj = &#123;b : 20&#125;obj.b = 200;console.log(obj.b) // 200]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>let</tag>
+        <tag>const</tag>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javascript DOM节点类型]]></title>
+    <url>%2F2018%2F04%2F18%2FnodeType%2F</url>
+    <content type="text"><![CDATA[JavaScript中所有HTML DOM节点类型都继承自Node类型，因此所有类型的节点都有一些相同的属性和方法。Node接口是DOM1级中定义的一个接口，在JavaScript中Node接口被实现为Node类型。 每个节点都有nodeType属性，该属性表示节点类型。在浏览器使用console.dir(Node)查看： 这些类型中，有些节点可以包含子节点，有些没有子节点，详细如下： 节点类型 描述 子节点 Element 代表元素 Element, Text, Comment, ProcessingInstruction, CDATASection, EntityReference Attr 代表属性 Text, EntityReference Text 代表元素或属性中的文本内容 None CDATASection 代表文档中的 CDATA 部（不会由解析器解析的文本） None EntityReference 代表实体引用 Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference Entity 代表实体 Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference ProcessingInstruction 代表处理指令 None Comment 代表注释 None Document 整个文档，DOM树 Element, ProcessingInstruction, Comment, DocumentType DocumentType 向为文档定义的实体提供接口 None DocumentFragment 代表轻量级的 Document 对象（文档的某个部分） Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference Notation 代表 DTD 中声明的符号 None 常用节点类型 类型 常量 nodeType nodeName Element类型 ELEMENT_NODE 1 元素的标签名 Text类型 TEXT_NODE 3 #text Document类型 DOCUMENT_NODE 9 #document DocumentFragment类型 DOCUMENTFRAGMENT_NODE 11 #document-fragment]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>节点类型</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[css3帧动画-animation]]></title>
     <url>%2F2018%2F03%2F30%2Fanimation%2F</url>
-    <content type="text"><![CDATA[一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性123456animation-name 规定需要绑定到选择器的 keyframe 名称。。animation-duration 规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function 规定动画的速度曲线。animation-delay 规定在动画开始之前的延迟。animation-iteration-count 规定动画应该播放的次数。animation-direction 规定是否应该轮流反向播放动画。 animation-name属性animation-name规定需要绑定到选择器的 keyframe 名称。123.box &#123; animation-name: keyframe | none;&#125; 12keyframe 规定需要绑定到选择器的 keyframe 的名称。none 规定无动画效果（可用于覆盖来自级联的动画）。 animation-duration属性animation-duration规定完成动画所花费的时间，以秒或毫秒计。123.box &#123; animation-duration: time;&#125; 1time 规定完成动画所花费的时间。默认值是 0，意味着没有动画效果。 animation-timing-function属性animation-timing-function规定速度效果的速度曲线。1animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n); 123456linear 规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。ease 规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。ease-in 规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。ease-out 规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。ease-in-out 规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。cubic-bezier(n,n,n,n) 在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。 更多cubic-bezier自定义，查看http://cubic-bezier.com/ animation-delay属性animation-delay定义过渡效果何时开始。123.box &#123; animation-delay: time;&#125; 1time 可选。定义动画开始前等待的时间，以秒或毫秒计。默认值是 0。 animation-iteration-count属性animation-iteration-count规定动画应该播放的次数。123.box &#123; animation-iteration-count: n|infinite;&#125; 12n 定义动画播放次数的数值。infinite 规定动画应该无限次播放。 animation-direction属性animation-direction规定是否应该轮流反向播放动画。123.box &#123; animation-direction: normal | alternate;&#125; 12normal 默认值。动画应该正常播放。alternate 动画应该轮流反向播放。 animation 属性transition属性是animation-name, animation-duration , animation-timing-function, animation-delay, animation-iteration-count 和 animation-direction的简写，默认值为none 0 ease 0 1 normal。123.box &#123; animation: name duration timing-function delay iteration-count direction;&#125;]]></content>
+    <content type="text"><![CDATA[一、什么是帧动画？前面提到补间动画，只能定制动画的两个状态，也就是开始和介绍状态。但是帧动画就能控制到每一帧的动画，从而做出更为复杂的动画。 二、animation的属性12345678animation-name 规定需要绑定到选择器的 keyframe 名称。。animation-duration 规定完成动画所花费的时间，以秒或毫秒计。animation-timing-function 规定动画的速度曲线。animation-delay 规定在动画开始之前的延迟。animation-iteration-count 规定动画应该播放的次数。animation-direction 规定是否应该轮流反向播放动画。animation-fill-mode 规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式animation-play-state 指定动画是否正在运行或已暂停。 animation-name属性animation-name规定需要绑定到选择器的 keyframe 名称。123.box &#123; animation-name: keyframe | none;&#125; 12keyframe 规定需要绑定到选择器的 keyframe 的名称。none 规定无动画效果（可用于覆盖来自级联的动画）。 keyframe语法:12345@keyframes changeBg &#123; 0% &#123; background: #c00; &#125; 50% &#123; background: orange; &#125; 100% &#123; background: yellowgreen; &#125;&#125; 上面代码表示，changeBg效果一共有三个状态，分别为起始（0%）、中点（50%）和结束（100%）。如果有需要，完全可以插入更多状态。 animation-duration属性animation-duration规定完成动画所花费的时间，以秒或毫秒计。123.box &#123; animation-duration: time;&#125; 1time 规定完成动画所花费的时间。默认值是 0，意味着没有动画效果。 animation-timing-function属性animation-timing-function规定速度效果的速度曲线。1animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n); 123456linear 规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。ease 规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。ease-in 规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。ease-out 规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。ease-in-out 规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。cubic-bezier(n,n,n,n) 在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。 更多cubic-bezier自定义，查看http://cubic-bezier.com/ animation-delay属性animation-delay定义过渡效果何时开始。123.box &#123; animation-delay: time;&#125; 1time 可选。定义动画开始前等待的时间，以秒或毫秒计。默认值是 0。 animation-iteration-count属性animation-iteration-count规定动画应该播放的次数。123.box &#123; animation-iteration-count: n|infinite;&#125; 12n 定义动画播放次数的数值。infinite 规定动画应该无限次播放。 animation-direction属性animation-direction规定是否应该轮流反向播放动画。123.box &#123; animation-direction: normal | alternate;&#125; 12normal 默认值。动画应该正常播放。alternate 动画应该轮流反向播放。 animation-fill-mode属性animation-fill-mode属性规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。123.box &#123; animation-fill-mode: none | forwards | backwards | both | initial | inherit;&#125; 123456none 默认值。动画在动画执行之前和之后不会应用任何样式到目标元素。forwards 在动画结束后,停留在结束的位置（由 animation-iteration-count 决定），动画将应用该属性值。backwards 让动画回到第一帧的状态。both 动画遵循 forwards 和 backwards 的规则。也就是说，动画会在两个方向上扩展动画属性。initial 设置该属性为它的默认值。请参阅 initial。inherit 从父元素继承该属性。请参阅 inherit。 animation-direction属性animation-direction规定是否应该轮流反向播放动画。123.box &#123; animation-direction: normal | alternate;&#125; 12normal 默认值。动画应该正常播放。alternate 动画应该轮流反向播放。 animation 属性transition属性是animation-name, animation-duration , animation-timing-function, animation-delay, animation-iteration-count , animation-direction , animation-fill-mode和 animation-play-state的简写，默认值为none 0 ease 0 1 normal none running。123.box &#123; animation: name duration timing-function delay iteration-count direction fill-mode play-state;&#125;]]></content>
       <categories>
         <category>css</category>
       </categories>
