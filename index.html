@@ -301,6 +301,574 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/28/es6-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/28/es6-8/" itemprop="url">symbol数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T10:03:59+08:00">
+                2018-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="什么是symbol"><a href="#什么是symbol" class="headerlink" title="什么是symbol"></a>什么是symbol</h3><p><code>symbol</code>表示独一无二的值，它是js中第7中数据类型。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//基本数据类型 null undefined Number Boolan String Symbol</span><br><span class="line">//引用数据类型 object</span><br></pre></td></tr></table></figure>
+<h3 id="创建symbol"><a href="#创建symbol" class="headerlink" title="创建symbol"></a>创建symbol</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = Symbol();</span><br><span class="line">console.log(typeof a); //symbol</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> a = Symbol();</span><br><span class="line"><span class="built_in">let</span> b = Symbol();</span><br><span class="line">console.log(a === b) // <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p><code>symbol</code>函数前不能使用<code>new</code>,否则会报错。原因在于<code>symbol</code>是一个原始类型的值，不是一个对象。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = Symbol();</span><br><span class="line"><span class="built_in">let</span> b = Symbol();</span><br><span class="line">console.log(a,b) //Symbol(),Symbol()</span><br></pre></td></tr></table></figure>
+<p>这样没办法区分哪个是a,哪个是b,这样时候可以添加参数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = Symbol(<span class="string">'a'</span>);</span><br><span class="line"><span class="built_in">let</span> b = Symbol(<span class="string">'b'</span>);</span><br><span class="line">console.log(a,b) //Symbol(a),Symbol(b)</span><br></pre></td></tr></table></figure></p>
+<p><code>symbol</code>接受一个字符串做为参数，表示对<code>symbol</code>的描述，主要在控制台显示，或是转化为字符串的时候比较容易区分。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.log(Symbol(<span class="string">'a'</span>) === Symbol(<span class="string">'a'</span>)) //<span class="literal">false</span>，参数仅仅只作为描述。</span><br><span class="line"></span><br><span class="line"><span class="comment">### symole数据类型转换</span></span><br><span class="line">```bash</span><br><span class="line">console.log(String(Symbol(<span class="string">'a'</span>))) //<span class="string">'Symbol(a)'</span></span><br><span class="line">console.log(Symbol(<span class="string">'a'</span>).toString()) //<span class="string">'Symbol(a)'</span></span><br><span class="line">console.log(!Symbol()) //<span class="literal">false</span>，symbol默认是<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p><code>symbol</code>不能转换成数字，不能字符串拼接，不能做任何运算。</p>
+<h3 id="symbol作为对象的属性名"><a href="#symbol作为对象的属性名" class="headerlink" title="symbol作为对象的属性名"></a>symbol作为对象的属性名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = Symbol(<span class="string">'name'</span>);</span><br><span class="line"><span class="built_in">let</span> obj = &#123;&#125;</span><br><span class="line">obj[a] = <span class="string">'liuguangkuo'</span>;</span><br><span class="line">console.log(obj) //&#123;Symbol(name): <span class="string">"liuguangkuo"</span>&#125;</span><br><span class="line">console.log(obj[a]) //liuguangkuo</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> a = Symbol(<span class="string">'name'</span>);</span><br><span class="line"><span class="built_in">let</span> obj = &#123;</span><br><span class="line">    [a] : <span class="string">'liuguangkuo'</span></span><br><span class="line">&#125;</span><br><span class="line">console.log(obj) //&#123;Symbol(name): <span class="string">"liuguangkuo"</span>&#125;</span><br><span class="line">console.log(obj[a]) //liuguangkuo</span><br></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    [Symbol()] : <span class="string">'123'</span></span><br><span class="line">&#125;</span><br><span class="line">console.log(obj) //&#123;Symbol(): <span class="string">"123"</span>&#125;</span><br><span class="line">console.log(obj[Symbol()]) // undefined</span><br><span class="line">console.log(obj[<span class="string">'Symbol()'</span>]) // undefined</span><br></pre></td></tr></table></figure>
+<p>这样些的话，是拿不到键对应的值的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    [Symbol()] : <span class="string">'123'</span>,</span><br><span class="line">    a : 1,</span><br><span class="line">    b : 2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    console.log(i)</span><br><span class="line">&#125;</span><br><span class="line">//a</span><br><span class="line">//b</span><br></pre></td></tr></table></figure>
+<p>不能for-in循环遍历，虽然不能被遍历，但也不是私有属性，可以通过<code>Object.getOwnPropertySymbols</code>方法获得一个对象所有的<code>Symbol</code>属性。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    [Symbol()] : <span class="string">'123'</span>,</span><br><span class="line">    a : 1,</span><br><span class="line">    b : 2</span><br><span class="line">&#125;</span><br><span class="line">console.log(Object.getOwnPropertySymbols(obj)) //返回obj下面所有的`symbol`类型，数组类型</span><br><span class="line">console.log(obj[Object.getOwnPropertySymbols(obj)[0]]) //123</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/27/es6-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/27/es6-7/" itemprop="url">class的继承</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T10:37:01+08:00">
+                2018-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h3><p>class可以通过<code>extends</code>关键字实现继承，这比es5通过修改原型链实现继承，要清晰方便的多。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class point&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">class colorPoint extends point&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码，定义了一个<code>colorPoint</code>类，该类通过<code>extends</code>方法继承了<code>point</code>所有的属性和方法。但由于没有部署任何代码，所以两个类完全一样，等于复制了一份<code>point</code>类。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class colorPoint&#123;</span><br><span class="line">    constructor(x,y,color)&#123;</span><br><span class="line">        super(x,y)//调用父类constructor(x,y)</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">toString</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> this.color + <span class="string">' '</span> + super.toString();//调用父类的toString方法</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码中，<code>constructor</code>方法和<code>toString</code>方法中都出现了<code>super</code>关键字，他在这里表示父类的构造函数，用来新建父类的<code>this</code>对象。</p>
+<p>子类必须在<code>constructor</code>中调用<code>super</code>方法，负责新建实例会报错，这是因为子类没有自己的<code>this</code>对象，而是继承父类的<code>this</code>对象，然后对其进行加工。如果不调用<code>super</code>方法，找不到子类的<code>this</code>对象。</p>
+<p>在子类的构造函数中，只有调用了<code>super</code>方法，才能使用<code>this</code>关键字，否则会报错。这是因为子类实例的构造，是基于父类实例加工，<code>super</code>才能返回父类实例。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class point&#123;</span><br><span class="line">    constructor(x,y)&#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class colorPoint extends point&#123;</span><br><span class="line">    constructor(x,y,color)&#123;</span><br><span class="line">        this.color = color; //ReferenceError</span><br><span class="line">        super(x,y);</span><br><span class="line">        this.color = color; //正确</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，子类的<code>constructor</code>方法没有调用<code>super</code>之前，就使用<code>this</code>关键字，结果报错，而放在<code>super</code>方法之后就是正确的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/es6-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/20/es6-6/" itemprop="url">class的基础使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T15:59:21+08:00">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>javascript语言中，生成实例对象的传统方法是构造函数，如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> point(x,y)&#123;</span><br><span class="line">    this.x = x;</span><br><span class="line">    this.y = y</span><br><span class="line">&#125;</span><br><span class="line">point.prototype.<span class="function"><span class="title">toString</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="string">'('</span> + this.x + <span class="string">','</span> + this.y + <span class="string">')'</span>;</span><br><span class="line">&#125;</span><br><span class="line">var p = new point(1,2);</span><br></pre></td></tr></table></figure></p>
+<p>es6提供了新的方法，通过<code>class</code>来定义。基本上<code>class</code>可以看作只是一个语法糖，他的绝大部分功能，es5都可以做道，新的<code>class</code>写法只是让对象原型的方法更加清晰，更像面向对象的语法而已，上面的代码用<code>class</code>改写，如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class point&#123;</span><br><span class="line">    constructor(x,y)&#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">toString</span></span> ()&#123;</span><br><span class="line">        retrun <span class="string">'('</span>+ this.x +<span class="string">','</span>+this.y + <span class="string">')'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码定义了一个“类”，可以看到里面有一个<code>constructor</code>方法，这就是构造方法，而<code>this</code>关键字则代表实例对象。也就是说，ES5 的构造函数<code>point</code>，对应es6的<code>point</code>类的构造方法。</p>
+<p>point类除了构造方法，还定义了一个toString方法。注意，定义“类”的方法的时候，前面不需要加上function这个关键字，直接把函数定义放进去了就可以了。另外，方法之间不需要逗号分隔，加了会报错。</p>
+<p>es6 的类，完全可以看作构造函数的另一种写法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class point&#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br><span class="line">typeof point //<span class="string">'function'</span></span><br><span class="line">point  === point.prototype.constructor //<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>构造函数的prototype属性，在 eS6 的“类”上面继续存在。事实上，类的所有方法都定义在类的prototype属性上面。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class point&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span> ()&#123;</span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">toString</span></span> ()&#123;</span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">toValue</span></span> ()&#123;</span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//等同与</span><br><span class="line">point.prototype = &#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span>() &#123;&#125;,</span><br><span class="line">    <span class="function"><span class="title">toString</span></span>() &#123;&#125;,</span><br><span class="line">    <span class="function"><span class="title">toValue</span></span>() &#123;&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class point&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span>()&#123;</span><br><span class="line">        //..</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Object.assign(point.prototype,&#123;</span><br><span class="line">    <span class="function"><span class="title">toString</span></span>() &#123;&#125;,</span><br><span class="line">    <span class="function"><span class="title">toValue</span></span>() &#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>定义在类中的方法是不可枚举的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(Object.keys(point.prototype)) //[]</span><br></pre></td></tr></table></figure></p>
+<p>contructor方法是类的默认方法，通过new命令生成对象实例时，自动调用contructor方法。一个类必须有constructor方法，如果没有定义，一个空的constrctor方法会被默认添加。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/es6-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/20/es6-5/" itemprop="url">iterator和for-of循环</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T10:41:27+08:00">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><p>在es6中新增了set和map两种数据结构，再加上js原有的数组和对象，这样就有4中数据结构集合，平时还可以组合使用他们，定义自己的数据结构，比如数组的成员是map，map的成员是对象等。这样就需要一个统一的接口机制，来统一的处理数据结构。</p>
+<p>iterator就是这样的一个接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署了iterator接口，就可以完成遍历操作，而这种遍历操作是<code>依次处理</code>改数据结构中的所有成员。</p>
+<p>iterator遍历器的作用：<br>1.为各种不同的数据结构提供统一的访问接口。<br>2.使得所有的数据结构成员能够按某种次序排列。<br>3.es6新增了遍历命令for…of循环，iterator接口主要提供for…of使用。</p>
+<h3 id="iterator方法"><a href="#iterator方法" class="headerlink" title="iterator方法"></a>iterator方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1,2,3];</span><br><span class="line"><span class="keyword">function</span> iterator(arr)&#123;</span><br><span class="line">    <span class="built_in">let</span> index = 0;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        next : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            <span class="built_in">return</span> index &lt; arr.length ? &#123;value : arr[index++],<span class="keyword">done</span>: <span class="literal">false</span>&#125; : &#123;value : undefined,<span class="keyword">done</span> : <span class="literal">true</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const it = inerator(arr);</span><br><span class="line">console.log(it.next()) // &#123;value : 1,<span class="keyword">done</span> : <span class="literal">false</span>&#125;</span><br><span class="line">console.log(it.next()) // &#123;value : 2,<span class="keyword">done</span> : <span class="literal">false</span>&#125;</span><br><span class="line">console.log(it.next()) // &#123;value : 3,<span class="keyword">done</span> : <span class="literal">false</span>&#125;</span><br><span class="line">console.log(it.next()) // &#123;value : undefined,<span class="keyword">done</span> : <span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/20/es6-5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/es6-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -390,8 +958,7 @@
 
       
         
-          
-            <h3 id="创建map"><a href="#创建map" class="headerlink" title="创建map"></a>创建map</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([</span><br><span class="line">    [<span class="string">'a'</span>,1],</span><br><span class="line">    [<span class="string">'b'</span>,2]</span><br><span class="line">])</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure>
+          <h3 id="创建map"><a href="#创建map" class="headerlink" title="创建map"></a>创建map</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([</span><br><span class="line">    [<span class="string">'a'</span>,1],</span><br><span class="line">    [<span class="string">'b'</span>,2]</span><br><span class="line">])</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure>
 <image src="/2018/4-18/p6.png">
 
 <h3 id="map的属性"><a href="#map的属性" class="headerlink" title="map的属性"></a>map的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.size) //2</span><br></pre></td></tr></table></figure>
@@ -400,21 +967,13 @@
 
 <h4 id="2-map-get-key-获取key对应的value值，如果没有，返回undefined"><a href="#2-map-get-key-获取key对应的value值，如果没有，返回undefined" class="headerlink" title="2.map.get(key),获取key对应的value值，如果没有，返回undefined"></a>2.map.get(key),获取key对应的value值，如果没有，返回undefined</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.get(<span class="string">'one'</span>)) //1</span><br><span class="line">console.log(a.get(<span class="string">'three'</span>)) //undefined</span><br></pre></td></tr></table></figure>
 <h4 id="3-map-delete-key-删除某个key，成功返回true，失败返回false"><a href="#3-map-delete-key-删除某个key，成功返回true，失败返回false" class="headerlink" title="3.map.delete(key),删除某个key，成功返回true，失败返回false"></a>3.map.delete(key),删除某个key，成功返回true，失败返回false</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.delete(<span class="string">'one'</span>)) //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">//再次执行删除</span><br><span class="line">console.log(a.delete(<span class="string">'one'</span>)) //<span class="literal">false</span> 上面已经删除过了one,所有删除失败</span><br></pre></td></tr></table></figure>
-<h4 id="4-map-has-key-返回布尔值，表示key是否存在"><a href="#4-map-has-key-返回布尔值，表示key是否存在" class="headerlink" title="4.map.has(key),返回布尔值，表示key是否存在"></a>4.map.has(key),返回布尔值，表示key是否存在</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.has(<span class="string">'one'</span>)) //<span class="literal">true</span></span><br><span class="line">console.log(a.has(<span class="string">'three'</span>)) //<span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h4 id="5-map-clear-，清空所有数据，没有返回"><a href="#5-map-clear-，清空所有数据，没有返回" class="headerlink" title="5.map.clear()，清空所有数据，没有返回"></a>5.map.clear()，清空所有数据，没有返回</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.clear()</span><br></pre></td></tr></table></figure>
-<h4 id="6-set-keys-返回key的遍历器"><a href="#6-set-keys-返回key的遍历器" class="headerlink" title="6.set.keys()返回key的遍历器"></a>6.set.keys()返回key的遍历器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.keys()</span><br></pre></td></tr></table></figure>
-<image src="/2018/4-18/p8.png">
-
-<h4 id="6-set-values-返回value的遍历器"><a href="#6-set-values-返回value的遍历器" class="headerlink" title="6.set.values()返回value的遍历器"></a>6.set.values()返回value的遍历器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.values()</span><br></pre></td></tr></table></figure>
-<image src="/2018/4-18/p9.png">
-
-<h4 id="6-set-entries-返回键值对的便利器"><a href="#6-set-entries-返回键值对的便利器" class="headerlink" title="6.set.entries()返回键值对的便利器"></a>6.set.entries()返回键值对的便利器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.entries()</span><br></pre></td></tr></table></figure>
-<image src="/2018/4-18/p10.png">
-
-<h4 id="7-set-forEach-使用回调函数遍历每个成员"><a href="#7-set-forEach-使用回调函数遍历每个成员" class="headerlink" title="7.set.forEach()使用回调函数遍历每个成员"></a>7.set.forEach()使用回调函数遍历每个成员</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.forEach(<span class="keyword">function</span>(value,key,map)&#123;</span><br><span class="line">    console.log(value,key,map)//有3个参数</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<image src="/2018/4-18/p11.png">
-</image></image></image></image></image></image>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/19/es6-4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -545,27 +1104,18 @@
 
       
         
-          
-            <h3 id="创建set"><a href="#创建set" class="headerlink" title="创建set"></a>创建set</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Set();</span><br><span class="line"></span><br><span class="line">const a = new Set([1,2,3])//可以传参数</span><br></pre></td></tr></table></figure>
+          <h3 id="创建set"><a href="#创建set" class="headerlink" title="创建set"></a>创建set</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Set();</span><br><span class="line"></span><br><span class="line">const a = new Set([1,2,3])//可以传参数</span><br></pre></td></tr></table></figure>
 <h3 id="set的属性-返回set数据里的个数"><a href="#set的属性-返回set数据里的个数" class="headerlink" title="set的属性,返回set数据里的个数"></a>set的属性,返回set数据里的个数</h3><p>console.log(a.size) //3</p>
 <h3 id="set的方法"><a href="#set的方法" class="headerlink" title="set的方法"></a>set的方法</h3><h4 id="1-set-add-value-添加一个数据，返回set本身结构-可以链式添加"><a href="#1-set-add-value-添加一个数据，返回set本身结构-可以链式添加" class="headerlink" title="1.set.add(value)添加一个数据，返回set本身结构,可以链式添加"></a>1.set.add(value)添加一个数据，返回set本身结构,可以链式添加</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a.add(4);</span><br><span class="line">console.log(a) //1,2,3,4</span><br><span class="line"></span><br><span class="line">a.add(5).add(6).add(7);</span><br><span class="line">console.log(a) //1,2,3,4,5,6,7</span><br></pre></td></tr></table></figure>
 <h4 id="2-set-delete-value-删除指定数据，返回一个布尔值，表示是否删除成功"><a href="#2-set-delete-value-删除指定数据，返回一个布尔值，表示是否删除成功" class="headerlink" title="2.set.delete(value)删除指定数据，返回一个布尔值，表示是否删除成功"></a>2.set.delete(value)删除指定数据，返回一个布尔值，表示是否删除成功</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.delete(1)); //<span class="literal">true</span></span><br><span class="line">console.log(a) //2,3,4,5,6,7</span><br><span class="line"></span><br><span class="line">//再次执行删除</span><br><span class="line">console.log(a.delete(1)); //<span class="literal">false</span> 上面已经删除过了1,所有删除失败</span><br></pre></td></tr></table></figure>
 <h4 id="3-set-has-value-判断set数据里是否包含改值，返回一个布尔值"><a href="#3-set-has-value-判断set数据里是否包含改值，返回一个布尔值" class="headerlink" title="3.set.has(value)判断set数据里是否包含改值，返回一个布尔值"></a>3.set.has(value)判断set数据里是否包含改值，返回一个布尔值</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.has(1)); //<span class="literal">false</span></span><br><span class="line">console.log(a.has(2)); //<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-set-clear-清楚结构中所有的数据，没有返回"><a href="#4-set-clear-清楚结构中所有的数据，没有返回" class="headerlink" title="4.set.clear()清楚结构中所有的数据，没有返回"></a>4.set.clear()清楚结构中所有的数据，没有返回</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.clear()</span><br><span class="line">console.log(a) //被清空</span><br></pre></td></tr></table></figure>
-<h4 id="5-set-keys-和set-values-返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的"><a href="#5-set-keys-和set-values-返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的" class="headerlink" title="5.set.keys()和set.values() 返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的"></a>5.set.keys()和set.values() 返回兼职的遍历器，因为set的key和value的值是一样的，所有两个方法返回的值是相同的</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const b = new Set([1,2,3]);</span><br><span class="line">b.keys()</span><br><span class="line">b.value()</span><br></pre></td></tr></table></figure>
-<image src="/2018/4-18/p2.png">
-
-<h4 id="6-set-entries-返回键值对的便利器"><a href="#6-set-entries-返回键值对的便利器" class="headerlink" title="6.set.entries()返回键值对的便利器"></a>6.set.entries()返回键值对的便利器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const c = new Set([1,2,3]);</span><br><span class="line">c.entries()</span><br></pre></td></tr></table></figure>
-<image src="/2018/4-18/p3.png">
-
-<h4 id="7-set-forEach-使用回调函数遍历每个成员"><a href="#7-set-forEach-使用回调函数遍历每个成员" class="headerlink" title="7.set.forEach()使用回调函数遍历每个成员"></a>7.set.forEach()使用回调函数遍历每个成员</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const d = new Set([1,2,3,4])</span><br><span class="line">d.forEach(<span class="keyword">function</span>(value,key,<span class="built_in">set</span>)&#123;</span><br><span class="line">    console.log(value,key,<span class="built_in">set</span>)//有3个参数</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<image src="/2018/4-18/p4.png">
-
-<h4 id="set不允许有重复的数据"><a href="#set不允许有重复的数据" class="headerlink" title="set不允许有重复的数据"></a>set不允许有重复的数据</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const d = new Set([1,2,3,4])</span><br><span class="line">d.add(4)</span><br></pre></td></tr></table></figure>
-<image src="/2018/4-18/p5.png">
-
-</image></image></image></image>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/19/es6-3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -696,11 +1246,15 @@
 
       
         
-          
-            <h3 id="数组的结构赋值"><a href="#数组的结构赋值" class="headerlink" title="数组的结构赋值"></a>数组的结构赋值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = 1;</span><br><span class="line"><span class="built_in">let</span> b = 2;</span><br><span class="line"><span class="built_in">let</span> c = 3;</span><br><span class="line">console.log(a,b,c) //1,2,3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a,b,c] = [1,2,3]</span><br><span class="line">console.log(a,b,c) //1,2,3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span>[a,[[b],c]] = [1,[[2],3]];</span><br><span class="line">console.log(a,b,c) //1,2,3 匹配对等的值</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [,,c] = [1,2,3]</span><br><span class="line">console.log(c) //3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a] = [];</span><br><span class="line">console.log(a) //undefined</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a = 1] = [];</span><br><span class="line">console.log(a) //1,默认赋值</span><br></pre></td></tr></table></figure>
+          <h3 id="数组的结构赋值"><a href="#数组的结构赋值" class="headerlink" title="数组的结构赋值"></a>数组的结构赋值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = 1;</span><br><span class="line"><span class="built_in">let</span> b = 2;</span><br><span class="line"><span class="built_in">let</span> c = 3;</span><br><span class="line">console.log(a,b,c) //1,2,3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a,b,c] = [1,2,3]</span><br><span class="line">console.log(a,b,c) //1,2,3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span>[a,[[b],c]] = [1,[[2],3]];</span><br><span class="line">console.log(a,b,c) //1,2,3 匹配对等的值</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [,,c] = [1,2,3]</span><br><span class="line">console.log(c) //3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a] = [];</span><br><span class="line">console.log(a) //undefined</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [a = 1] = [];</span><br><span class="line">console.log(a) //1,默认赋值</span><br></pre></td></tr></table></figure>
 <h3 id="对象的结构赋值"><a href="#对象的结构赋值" class="headerlink" title="对象的结构赋值"></a>对象的结构赋值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> &#123;a,b&#125; = &#123;b : 1,a : 2&#125;;</span><br><span class="line">console.log(a,b) //2,1</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> &#123;a : b&#125; = &#123;a : 1&#125;</span><br><span class="line">console.log(b) //1</span><br><span class="line">console.log(a) //a is not defined</span><br></pre></td></tr></table></figure>
-<h3 id="基本类型的结构赋值"><a href="#基本类型的结构赋值" class="headerlink" title="基本类型的结构赋值"></a>基本类型的结构赋值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> [a,b,c] = <span class="string">'1,2,3'</span>;</span><br><span class="line">console.log(a,b,c) //1,2,3</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> &#123;toString : ts&#125; = 1;</span><br><span class="line"><span class="built_in">let</span> &#123;toString : bs&#125; = <span class="literal">true</span>;</span><br><span class="line">console.log(ts === Number.prototype.toString) //<span class="literal">true</span></span><br><span class="line">console.log(ts === Boolean.prototype.toString) //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> &#123;length : len&#125; = <span class="string">'liuguangkuo'</span></span><br><span class="line">console.log(len) //11</span><br><span class="line"></span><br><span class="line">null和undefined不能进行结构赋值</span><br><span class="line"><span class="built_in">let</span> [a] = null //错误</span><br><span class="line"><span class="built_in">let</span> [b] = undefined //错误</span><br></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/19/es6-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -831,16 +1385,16 @@
 
       
         
-          
-            <h3 id="let的使用"><a href="#let的使用" class="headerlink" title="let的使用"></a>let的使用</h3><h4 id="1-使用let声明的变量只在命令所在的代码块内有效"><a href="#1-使用let声明的变量只在命令所在的代码块内有效" class="headerlink" title="1.使用let声明的变量只在命令所在的代码块内有效"></a>1.使用let声明的变量只在命令所在的代码块内有效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="built_in">let</span> a = 1;</span><br><span class="line">    var b = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(a) // a is not defined</span><br><span class="line">console.log(b) // 2</span><br></pre></td></tr></table></figure>
+          <h3 id="let的使用"><a href="#let的使用" class="headerlink" title="let的使用"></a>let的使用</h3><h4 id="1-使用let声明的变量只在命令所在的代码块内有效"><a href="#1-使用let声明的变量只在命令所在的代码块内有效" class="headerlink" title="1.使用let声明的变量只在命令所在的代码块内有效"></a>1.使用let声明的变量只在命令所在的代码块内有效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="built_in">let</span> a = 1;</span><br><span class="line">    var b = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(a) // a is not defined</span><br><span class="line">console.log(b) // 2</span><br></pre></td></tr></table></figure>
 <h4 id="2-使用let声明的变量在域解析的时候不会被提升"><a href="#2-使用let声明的变量在域解析的时候不会被提升" class="headerlink" title="2.使用let声明的变量在域解析的时候不会被提升"></a>2.使用let声明的变量在域解析的时候不会被提升</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.log(a) //a is not defined</span><br><span class="line"><span class="built_in">let</span> a = 1;</span><br><span class="line"></span><br><span class="line">console.log(b) //undefined</span><br><span class="line">var b = 2;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> c = 3;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>()&#123;</span><br><span class="line">    c = 10; //c is not defined(暂时性死去)</span><br><span class="line">    <span class="built_in">let</span> c = 20;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>()</span><br></pre></td></tr></table></figure>
 <h4 id="3-let不允许在同一个作用域下声明已经声明过的变量"><a href="#3-let不允许在同一个作用域下声明已经声明过的变量" class="headerlink" title="3.let不允许在同一个作用域下声明已经声明过的变量"></a>3.let不允许在同一个作用域下声明已经声明过的变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 0;</span><br><span class="line"><span class="built_in">let</span> a = 1; //错误</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> b = 0;</span><br><span class="line"><span class="built_in">let</span> b = 1;//错误</span><br></pre></td></tr></table></figure>
-<h4 id="4-let在for循环中的使用"><a href="#4-let在for循环中的使用" class="headerlink" title="4.let在for循环中的使用"></a>4.let在for循环中的使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;4&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;5&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">var lis = document.querySelectorAll(<span class="string">'li'</span>);</span><br><span class="line"><span class="keyword">for</span>(var i = 0;i &lt; lis.length;i++)&#123;</span><br><span class="line">    lis[i].onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        console.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">返回结果：</span><br><span class="line">点击后console的结果都是5</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0;i &lt; lis.length;i++)&#123;</span><br><span class="line">    lis[i].onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        console.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">返回结果：</span><br><span class="line">console.log(0)</span><br><span class="line">console.log(1)</span><br><span class="line">console.log(2)</span><br><span class="line">console.log(3)</span><br><span class="line">console.log(4)</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0;i &lt; 3;i++)&#123;</span><br><span class="line">    <span class="built_in">let</span> i = 10;</span><br><span class="line">    console.log(i)</span><br><span class="line">&#125;</span><br><span class="line">console.log(i)</span><br><span class="line"></span><br><span class="line">返回结果：</span><br><span class="line">3次10</span><br><span class="line">i is not defined</span><br></pre></td></tr></table></figure>
-<h3 id="const的使用"><a href="#const的使用" class="headerlink" title="const的使用"></a>const的使用</h3><p>const具备和let的1、2、3条特点，1，常量只在命令所在的代码块内有效、2，常量在域解析的时候不会被提升、3，不能同一个作用域下声明已经声明过的常量</p>
-<h4 id="1-声明的时候必须赋值"><a href="#1-声明的时候必须赋值" class="headerlink" title="1.声明的时候必须赋值"></a>1.声明的时候必须赋值</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br><span class="line"><span class="built_in">let</span> b;</span><br><span class="line">const c;//错误</span><br></pre></td></tr></table></figure>
-<h4 id="2-声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。"><a href="#2-声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。" class="headerlink" title="2.声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。"></a>2.声明的常量存储基本数据类型的时候不可以更改其数据类型。如果存储的是对象，那么引用不可以改变，至于对象的数据，如何变化是没有关系的。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const a = 1;</span><br><span class="line">a = <span class="string">'1'</span>// 错误</span><br><span class="line"></span><br><span class="line">const obj = &#123;b : 20&#125;</span><br><span class="line">obj.b = 200;</span><br><span class="line">console.log(obj.b) // 200</span><br></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/19/es6-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1263,705 +1817,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/transition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/30/transition/" itemprop="url">css3补间动画-transition</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T16:24:21+08:00">
-                2018-03-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、什么是补间动画？"><a href="#一、什么是补间动画？" class="headerlink" title="一、什么是补间动画？"></a>一、什么是补间动画？</h3><p>补间动画，顾名思义，就是补齐中间状态的一种动画。补间动画我们可以控制两个状态，就是开始状态和介绍状态，中间的状态是由浏览器自动帮忙计算填补。</p>
-<h3 id="二、transition的属性"><a href="#二、transition的属性" class="headerlink" title="二、transition的属性"></a>二、transition的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transition-property 规定设置过渡效果的 CSS 属性的名称。</span><br><span class="line">transition-duration 规定完成过渡效果需要多少秒或毫秒。</span><br><span class="line">transition-timing-function  规定速度效果的速度曲线。</span><br><span class="line">transition-delay    定义过渡效果何时开始。</span><br></pre></td></tr></table></figure>
-<h4 id="transition-property属性"><a href="#transition-property属性" class="headerlink" title="transition-property属性"></a>transition-property属性</h4><p><code>transition-property</code>规定设置过渡效果的 CSS 属性的名称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  transition-property: all ｜ none | property;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">all 默认值，所有属性都将获得过渡效果。</span><br><span class="line">none  没有属性会获得过渡效果。</span><br><span class="line">property  定义应用过渡效果的 CSS 属性名称列表，列表以逗号分隔。</span><br></pre></td></tr></table></figure>
-<p>不是所有的css属性都支持transition动画，不支持的属性如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">background-images //a.jpg -&gt; b.jpg</span><br><span class="line"><span class="built_in">float</span> //none -&gt; left</span><br><span class="line">width/height //auto -&gt; 100px(不支持)，10px -&gt; 100px(支持)</span><br><span class="line">display //none -&gt;block</span><br><span class="line">visibility //hidden -&gt; visible</span><br><span class="line">position // static -&gt; absolute</span><br></pre></td></tr></table></figure></p>
-<h4 id="transition-duration属性"><a href="#transition-duration属性" class="headerlink" title="transition-duration属性"></a>transition-duration属性</h4><p><code>transition-duration</code>规定完成过渡效果需要多少秒或毫秒。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  transition-duration: time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time 规定完成过渡效果需要花费的时间（以秒或毫秒计）,默认值是 0，意味着不会有效果。</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/30/transition/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/flex/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/30/flex/" itemprop="url">css3布局－flex</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T09:59:23+08:00">
-                2018-03-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>以下内容主要来源于：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?^%$" target="_blank" rel="noopener">阮一峰的网络日志</a></p>
-</blockquote>
-<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><table>
-<thead>
-<tr>
-<th>Chrome</th>
-<th>Safari</th>
-<th>Firefox</th>
-<th>Opera</th>
-<th>IE</th>
-<th>Android</th>
-<th>iOS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>21+</td>
-<td>6.1+</td>
-<td>22+</td>
-<td>12.1+</td>
-<td>10+</td>
-<td>4.4+</td>
-<td>7.1+</td>
-</tr>
-</tbody>
-</table>
-<p>PC端不建议使用，毕竟ie7-ie9还有差不多15%的<a href="https://tongji.baidu.com/data/browser" target="_blank" rel="noopener">市场份额</a>，更多兼容查看：<a href="https://caniuse.com/#search=display%3Aflex" target="_blank" rel="noopener">Can I use</a></p>
-<h3 id="一、什么是flex布局？"><a href="#一、什么是flex布局？" class="headerlink" title="一、什么是flex布局？"></a>一、什么是flex布局？</h3><p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。<br>任何一个容器都可以指定为 Flex 布局。<br>可以使用<a href="https://demos.scotch.io/visual-guide-to-css3-flexbox-flexbox-playground/demos/" target="_blank" rel="noopener">Flexbox实时代码演示</a>帮助学习，但是该网站链接了google的cdn文件，要梯子、要梯子、要梯子。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>行内元素也可以使用 Flex 布局。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display: inline-flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>注意，设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。</p>
-<h3 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h3><p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”。</p>
-<p><image src="/2018/3-30/bg2015071004.png"><br>容器默认存在两根轴：水平的主轴<code>main axis</code>和垂直的交叉轴<code>cross axis</code>。主轴的开始位置（与边框的交叉点）叫做<code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</image></p>
-<p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</p>
-<h3 id="三、容器的属性"><a href="#三、容器的属性" class="headerlink" title="三、容器的属性"></a>三、容器的属性</h3><p>以下6个属性设置在容器上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">flex-direction //属性决定主轴的方向（即项目的排列方向）</span><br><span class="line">flex-wrap</span><br><span class="line">flex-flow</span><br><span class="line">justify-content</span><br><span class="line">align-items</span><br><span class="line">align-content</span><br></pre></td></tr></table></figure></p>
-<h4 id="flex-direction属性"><a href="#flex-direction属性" class="headerlink" title="flex-direction属性"></a>flex-direction属性</h4><p><code>flex-direction</code>属性决定主轴的方向（即项目的排列方向）。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">row（默认值）：主轴为水平方向，起点在左端。</span><br><span class="line">row-reverse：主轴为水平方向，起点在右端。</span><br><span class="line">column：主轴为垂直方向，起点在上沿。</span><br><span class="line">column-reverse：主轴为垂直方向，起点在下沿。</span><br></pre></td></tr></table></figure>
-<p><image src="/2018/3-30/bg2015071005.png"><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/30/flex/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/25/htmlMeta/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/25/htmlMeta/" itemprop="url">HTML meta标签大全</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T17:05:48+08:00">
-                2017-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/html/" itemprop="url" rel="index">
-                    <span itemprop="name">html</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>前文刚写完doctype，现在来学习关于meta，再写html的时候，最长用到的就是<meta charset="UTF-8">，但是meta不止这一个属性，下面来好好的了解了解meta</p>
-</blockquote>
-<h3 id="meta的作用"><a href="#meta的作用" class="headerlink" title="meta的作用"></a>meta的作用</h3><p>meta常用于定义页面的说明，关键字，最后修改日期，和其它的元数据。这些元数据将服务于浏览器（如何布局或重载页面），搜索引擎和其它网络服务。<br>语法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"参数"</span> content=<span class="string">"具体的参数值"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="可选的属性"><a href="#可选的属性" class="headerlink" title="可选的属性"></a>可选的属性</h4><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>值</th>
-<th>描述</th>
-<th>html4</th>
-<th>html5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>charset</td>
-<td>character encoding</td>
-<td>定义文档的字符编码。</td>
-<td>×</td>
-<td>√</td>
-</tr>
-<tr>
-<td>content</td>
-<td>some_text</td>
-<td>定义与 http-equiv 或 name 属性相关的元信息。</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>http-equiv</td>
-<td>content-type<br>expires<br>refresh<br>set-cookie</td>
-<td>把 content 属性关联到 HTTP 头部。</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>name</td>
-<td>author<br>description<br>keywords<br>generator<br>revised<br>others</td>
-<td>把 content 属性关联到一个名称。</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>scheme</td>
-<td>some_text</td>
-<td>定义用于翻译 content 属性值的格式。</td>
-<td>√</td>
-<td>×</td>
-</tr>
-</tbody>
-</table>
-<h3 id="http-equiv属性"><a href="#http-equiv属性" class="headerlink" title="http-equiv属性"></a>http-equiv属性</h3><p>http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容</p>
-<h4 id="content-Type"><a href="#content-Type" class="headerlink" title="content-Type"></a>content-Type</h4><p>说明：用于设定网页字符集，便于浏览器解析与渲染页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"content-Type"</span> content=<span class="string">"text/html;charset=utf-8"</span>&gt;  //不推荐使用</span><br><span class="line">&lt;meta charset=<span class="string">"utf-8"</span>&gt; //HTML5设定网页字符集的方式，推荐使用UTF-8</span><br></pre></td></tr></table></figure></p>
-<h4 id="expires网页到期时间"><a href="#expires网页到期时间" class="headerlink" title="expires网页到期时间"></a>expires网页到期时间</h4><p>说明:用于设定网页的到期时间，过期后网页必须到服务器上重新传输。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"expires"</span> content=<span class="string">"Sunday 26 October 2016 01:00 GMT"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="refresh自动刷新并指向某页面"><a href="#refresh自动刷新并指向某页面" class="headerlink" title="refresh自动刷新并指向某页面"></a>refresh自动刷新并指向某页面</h4><p>说明:网页将在设定的时间内，自动刷新并调向设定的网址。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"2；URL=http://www.baidu.com/"</span>&gt; //2秒后跳转百度</span><br></pre></td></tr></table></figure></p>
-<h4 id="Set-Cookie"><a href="#Set-Cookie" class="headerlink" title="Set-Cookie"></a>Set-Cookie</h4><p>说明:如果网页过期。那么这个网页存在本地的cookies也会被自动删除。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"Set-Cookie"</span> content=<span class="string">"name, date"</span>&gt; //格式</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Set-Cookie"</span> content=<span class="string">"User=liuguangkuo; path=/; expires=Sunday, 10-Jan-16 10:00:00 GMT"</span>&gt; //具体范例</span><br></pre></td></tr></table></figure></p>
-<h3 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a>name属性</h3><h4 id="author"><a href="#author" class="headerlink" title="author"></a>author</h4><p>说明:用于标注网页作者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"author"</span> content=<span class="string">"liuguangkuo"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="description"><a href="#description" class="headerlink" title="description"></a>description</h4><p>说明:页面描述，用于搜索引擎收录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"description"</span> content=<span class="string">"这是刘广阔的个人博客"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="keywords"><a href="#keywords" class="headerlink" title="keywords"></a>keywords</h4><p>说明:页面关键词，用于被搜索引擎收录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"keywords"</span> content=<span class="string">"刘广阔，博客，前端"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="generator"><a href="#generator" class="headerlink" title="generator"></a>generator</h4><p>说明:用于标注网页制作软件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"generator"</span> content=<span class="string">"atom"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="revised"><a href="#revised" class="headerlink" title="revised"></a>revised</h4><p>说明:网页文档的修改时间<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"revised"</span> content=<span class="string">"刘广阔的博客, 2017/10/10"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/25/htmlMeta/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/18/htmlDoctype/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/18/htmlDoctype/" itemprop="url">认识HTML的DOCTYPE</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-18T21:43:25+08:00">
-                2017-09-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/html/" itemprop="url" rel="index">
-                    <span itemprop="name">html</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>一直想回顾回顾以前的基础知识，刚好最近参加了腾讯imweb课堂的学习，从零开始再次学习，开始整理一系列学习笔记。前端工程师的三个必会技能html、css、javascript,咱先从html开始。</p>
-</blockquote>
-<h3 id="什么是DOCTYPE"><a href="#什么是DOCTYPE" class="headerlink" title="什么是DOCTYPE?"></a>什么是DOCTYPE?</h3><p>在学习HTML文档初，第一段代码往往是<code>&lt;!DOCTYPE html&gt;</code>，那么什么是<code>&lt;!DOCTYPE html&gt;</code>，它又有意义是什么呢？<br><code>&lt;!DOCTYPE&gt;</code>不是<code>HTML</code>标签。它为浏览器提供一项信息（声明），即<code>HTML</code>是用什么版本编写的。<br><code>&lt;!DOCTYPE&gt;</code>声明必须位于<code>HTML5</code>文档中的第一行，也就是位于<code>&lt;html&gt;</code>标签之前。<code>HTML</code>有多个不同的版本，该标签告知浏览器文档所使用哪种<code>HTML</code>规范，从而正确的显示网页。</p>
-<h3 id="HTML版本"><a href="#HTML版本" class="headerlink" title="HTML版本"></a>HTML版本</h3><p><code>HTML</code>也有多个不同的版本，只有完全明白页面中使用的确切<code>HTML</code>版本，浏览器才能完全正确地显示出<code>HTML</code>页面。现在常用的版本为<code>HTML5</code>，声明就是<code>&lt;!DOCTYPE html&gt;</code>，没个版本又不同的声明，下面是<code>HTML</code>版本的列表:</p>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th style="text-align:right">年份</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HTML</td>
-<td style="text-align:right">1991</td>
-</tr>
-<tr>
-<td>HTML2.0</td>
-<td style="text-align:right">1995</td>
-</tr>
-<tr>
-<td>HTML3.2</td>
-<td style="text-align:right">1997</td>
-</tr>
-<tr>
-<td>HTML4.01</td>
-<td style="text-align:right">1999</td>
-</tr>
-<tr>
-<td>XHTML1.0</td>
-<td style="text-align:right">2000</td>
-</tr>
-<tr>
-<td>HTML5</td>
-<td style="text-align:right">2012</td>
-</tr>
-<tr>
-<td>XHTML5</td>
-<td style="text-align:right">2013</td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/18/htmlDoctype/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2011,7 +1866,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2033,7 +1888,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

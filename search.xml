@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[symbol数据类型]]></title>
+    <url>%2F2018%2F04%2F28%2Fes6-8%2F</url>
+    <content type="text"><![CDATA[什么是symbolsymbol表示独一无二的值，它是js中第7中数据类型。 12//基本数据类型 null undefined Number Boolan String Symbol//引用数据类型 object 创建symbol123456let a = Symbol();console.log(typeof a); //symbollet a = Symbol();let b = Symbol();console.log(a === b) // false symbol函数前不能使用new,否则会报错。原因在于symbol是一个原始类型的值，不是一个对象。 123let a = Symbol();let b = Symbol();console.log(a,b) //Symbol(),Symbol() 这样没办法区分哪个是a,哪个是b,这样时候可以添加参数。123let a = Symbol('a');let b = Symbol('b');console.log(a,b) //Symbol(a),Symbol(b) symbol接受一个字符串做为参数，表示对symbol的描述，主要在控制台显示，或是转化为字符串的时候比较容易区分。1234567console.log(Symbol('a') === Symbol('a')) //false，参数仅仅只作为描述。### symole数据类型转换```bashconsole.log(String(Symbol('a'))) //'Symbol(a)'console.log(Symbol('a').toString()) //'Symbol(a)'console.log(!Symbol()) //false，symbol默认是true symbol不能转换成数字，不能字符串拼接，不能做任何运算。 symbol作为对象的属性名123456789101112let a = Symbol('name');let obj = &#123;&#125;obj[a] = 'liuguangkuo';console.log(obj) //&#123;Symbol(name): "liuguangkuo"&#125;console.log(obj[a]) //liuguangkuolet a = Symbol('name');let obj = &#123; [a] : 'liuguangkuo'&#125;console.log(obj) //&#123;Symbol(name): "liuguangkuo"&#125;console.log(obj[a]) //liuguangkuo 注意事项123456const obj = &#123; [Symbol()] : '123'&#125;console.log(obj) //&#123;Symbol(): "123"&#125;console.log(obj[Symbol()]) // undefinedconsole.log(obj['Symbol()']) // undefined 这样些的话，是拿不到键对应的值的。 12345678910const obj = &#123; [Symbol()] : '123', a : 1, b : 2&#125;for(let i in obj)&#123; console.log(i)&#125;//a//b 不能for-in循环遍历，虽然不能被遍历，但也不是私有属性，可以通过Object.getOwnPropertySymbols方法获得一个对象所有的Symbol属性。1234567const obj = &#123; [Symbol()] : '123', a : 1, b : 2&#125;console.log(Object.getOwnPropertySymbols(obj)) //返回obj下面所有的`symbol`类型，数组类型console.log(obj[Object.getOwnPropertySymbols(obj)[0]]) //123]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>javascript</tag>
+        <tag>symbol</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[class的继承]]></title>
+    <url>%2F2018%2F04%2F27%2Fes6-7%2F</url>
+    <content type="text"><![CDATA[extendsclass可以通过extends关键字实现继承，这比es5通过修改原型链实现继承，要清晰方便的多。123456class point&#123;&#125;class colorPoint extends point&#123;&#125; 上面的代码，定义了一个colorPoint类，该类通过extends方法继承了point所有的属性和方法。但由于没有部署任何代码，所以两个类完全一样，等于复制了一份point类。12345678910class colorPoint&#123; constructor(x,y,color)&#123; super(x,y)//调用父类constructor(x,y) this.color = color; &#125; toString()&#123; return this.color + ' ' + super.toString();//调用父类的toString方法 &#125;&#125; 上面的代码中，constructor方法和toString方法中都出现了super关键字，他在这里表示父类的构造函数，用来新建父类的this对象。 子类必须在constructor中调用super方法，负责新建实例会报错，这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。如果不调用super方法，找不到子类的this对象。 在子类的构造函数中，只有调用了super方法，才能使用this关键字，否则会报错。这是因为子类实例的构造，是基于父类实例加工，super才能返回父类实例。1234567891011121314class point&#123; constructor(x,y)&#123; this.x = x; this.y = y; &#125;&#125;class colorPoint extends point&#123; constructor(x,y,color)&#123; this.color = color; //ReferenceError super(x,y); this.color = color; //正确 &#125;&#125; 上面代码中，子类的constructor方法没有调用super之前，就使用this关键字，结果报错，而放在super方法之后就是正确的。]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>javascript</tag>
+        <tag>class</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[class的基础使用]]></title>
+    <url>%2F2018%2F04%2F20%2Fes6-6%2F</url>
+    <content type="text"><![CDATA[介绍javascript语言中，生成实例对象的传统方法是构造函数，如：12345678function point(x,y)&#123; this.x = x; this.y = y&#125;point.prototype.toString()&#123; return '(' + this.x + ',' + this.y + ')';&#125;var p = new point(1,2); es6提供了新的方法，通过class来定义。基本上class可以看作只是一个语法糖，他的绝大部分功能，es5都可以做道，新的class写法只是让对象原型的方法更加清晰，更像面向对象的语法而已，上面的代码用class改写，如下：123456789class point&#123; constructor(x,y)&#123; this.x = x; this.y = y; &#125; toString ()&#123; retrun '('+ this.x +','+this.y + ')'; &#125;&#125; 上面代码定义了一个“类”，可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。也就是说，ES5 的构造函数point，对应es6的point类的构造方法。 point类除了构造方法，还定义了一个toString方法。注意，定义“类”的方法的时候，前面不需要加上function这个关键字，直接把函数定义放进去了就可以了。另外，方法之间不需要逗号分隔，加了会报错。 es6 的类，完全可以看作构造函数的另一种写法。12345class point&#123; //...&#125;typeof point //'function'point === point.prototype.constructor //true 构造函数的prototype属性，在 eS6 的“类”上面继续存在。事实上，类的所有方法都定义在类的prototype属性上面。123456789101112131415161718class point&#123; constructor ()&#123; //... &#125; toString ()&#123; //... &#125; toValue ()&#123; //... &#125;&#125;//等同与point.prototype = &#123; constructor() &#123;&#125;, toString() &#123;&#125;, toValue() &#123;&#125;,&#125; 由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。12345678910class point&#123; constructor()&#123; //.. &#125;&#125;Object.assign(point.prototype,&#123; toString() &#123;&#125;, toValue() &#123;&#125;&#125;) 定义在类中的方法是不可枚举的。1console.log(Object.keys(point.prototype)) //[] contructor方法是类的默认方法，通过new命令生成对象实例时，自动调用contructor方法。一个类必须有constructor方法，如果没有定义，一个空的constrctor方法会被默认添加。]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>javascript</tag>
+        <tag>class</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[iterator和for-of循环]]></title>
+    <url>%2F2018%2F04%2F20%2Fes6-5%2F</url>
+    <content type="text"><![CDATA[基础概念在es6中新增了set和map两种数据结构，再加上js原有的数组和对象，这样就有4中数据结构集合，平时还可以组合使用他们，定义自己的数据结构，比如数组的成员是map，map的成员是对象等。这样就需要一个统一的接口机制，来统一的处理数据结构。 iterator就是这样的一个接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署了iterator接口，就可以完成遍历操作，而这种遍历操作是依次处理改数据结构中的所有成员。 iterator遍历器的作用：1.为各种不同的数据结构提供统一的访问接口。2.使得所有的数据结构成员能够按某种次序排列。3.es6新增了遍历命令for…of循环，iterator接口主要提供for…of使用。 iterator方法123456789101112131415const arr = [1,2,3];function iterator(arr)&#123; let index = 0; return &#123; next : function()&#123; return index &lt; arr.length ? &#123;value : arr[index++],done: false&#125; : &#123;value : undefined,done : true&#125; &#125; &#125;&#125;const it = inerator(arr);console.log(it.next()) // &#123;value : 1,done : false&#125;console.log(it.next()) // &#123;value : 2,done : false&#125;console.log(it.next()) // &#123;value : 3,done : false&#125;console.log(it.next()) // &#123;value : undefined,done : true&#125; iterator的遍历过程1.创建一个指针对象，指向当前数据结构的起始位置，也就是说，遍历对象本质上就是一个指针对象。2.第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。3.第二次调用指针对象的next方法，可以将指针指向数据结构的第二个成员。4.不断的调用指针对象的next方法，知道它指向数据结构的结束位置。5.每次调用都会返回数据机构当前成员的信息，具体的说，就是返回value和done两个属性的对象，value表示当前属性的值，done表示是否遍历失败，值为布尔值。 自带iterator的数据结构array、set、map这三种数据结构自带iterator，object没有，凡是具有symbol.iterator属性的数据结构都具有iterator接口。 array,set,map的iterator1234567891011const arr = [1,2,3];const set = new Set(['a','b','c']);const map = new Map([['a',1]])const itarr = arr[Symbol.iterator]()const itset = set[Symbol.iterator]()const itmap = map[Symbol.iterator]()console.log(itarr)console.log(itset)console.log(itmap) 对象没有iterator12const obj = &#123;'a' : 1&#125;console.log(obj[Symbol.iterator]) //undefined 自带iterator的数据结构可以进行结构赋值123const set = new Set([1,2,3])const [x,y] = set;console.log(x,y) // 1,2 自带iterator的数据结构可以扩展运算符（…）1234567const str = 'xiao';const arrstr = [...str]console.log(attstr) //['x','i','a','o']//使用...数组去重复const arr = [1,2,3,1,2,3,4,5,6,5,5,4]console.log([...new Set(arr)]) //[1, 2, 3, 4, 5, 6] for-of循环，具备iterator的数据结构，都可以使用for-of循环for-of语法123456789const arr = ['a','b','c'];for(let i of arr)&#123; console.log(i)&#125;执行结果：abc 1234567891011121314151617const map = new Map([['one','1'],['two','2'],['three','3']])for(let data of map)&#123; console.log(data)&#125;执行结果：["one", "1"]["two", "2"]["three", "3"]for(let [key,value] of map)&#123; console.log(key,value)&#125;执行结果：one,1two,2three,3]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>javascript</tag>
+        <tag>iterator</tag>
+        <tag>for-of</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[map数据结构]]></title>
     <url>%2F2018%2F04%2F19%2Fes6-4%2F</url>
     <content type="text"><![CDATA[创建map12345const a = new Map([ ['a',1], ['b',2]])console.log(a) map的属性1console.log(a.size) //2 map的方法1.map.set(key,value),设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key123const a = new Map([['one',1],['two',2]])a.set('three',3)a.set('four',4).set('five',5) 2.map.get(key),获取key对应的value值，如果没有，返回undefined123const a = new Map([['one',1],['two',2]])console.log(a.get('one')) //1console.log(a.get('three')) //undefined 3.map.delete(key),删除某个key，成功返回true，失败返回false12345const a = new Map([['one',1],['two',2]])console.log(a.delete('one')) //true//再次执行删除console.log(a.delete('one')) //false 上面已经删除过了one,所有删除失败 4.map.has(key),返回布尔值，表示key是否存在123const a = new Map([['one',1],['two',2]])console.log(a.has('one')) //trueconsole.log(a.has('three')) //false 5.map.clear()，清空所有数据，没有返回12const a = new Map([['one',1],['two',2]])a.clear() 6.set.keys()返回key的遍历器12const a = new Map([['one',1],['two',2]])a.keys() 6.set.values()返回value的遍历器12const a = new Map([['one',1],['two',2]])a.values() 6.set.entries()返回键值对的便利器12const a = new Map([['one',1],['two',2]])a.entries() 7.set.forEach()使用回调函数遍历每个成员1234const a = new Map([['one',1],['two',2]])a.forEach(function(value,key,map)&#123; console.log(value,key,map)//有3个参数&#125;)]]></content>
@@ -22,8 +75,8 @@
       </categories>
       <tags>
         <tag>es6</tag>
-        <tag>javascript</tag>
         <tag>set</tag>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -35,8 +88,8 @@
       </categories>
       <tags>
         <tag>es6</tag>
-        <tag>let</tag>
         <tag>javascript</tag>
+        <tag>let</tag>
       </tags>
   </entry>
   <entry>
@@ -48,9 +101,9 @@
       </categories>
       <tags>
         <tag>es6</tag>
+        <tag>javascript</tag>
         <tag>let</tag>
         <tag>const</tag>
-        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>

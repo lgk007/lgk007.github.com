@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="随记">
 <meta property="og:description" content="创建map12345const a = new Map([    [&apos;a&apos;,1],    [&apos;b&apos;,2]])console.log(a)   map的属性1console.log(a.size) //2 map的方法1.map.set(key,value),设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key123const a = new Map([[">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-19T09:28:01.000Z">
+<meta property="og:updated_time" content="2018-04-20T07:20:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="map数据结构">
 <meta name="twitter:description" content="创建map12345const a = new Map([    [&apos;a&apos;,1],    [&apos;b&apos;,2]])console.log(a)   map的属性1console.log(a.size) //2 map的方法1.map.set(key,value),设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key123const a = new Map([[">
@@ -396,6 +396,7 @@
 
 <h4 id="2-map-get-key-获取key对应的value值，如果没有，返回undefined"><a href="#2-map-get-key-获取key对应的value值，如果没有，返回undefined" class="headerlink" title="2.map.get(key),获取key对应的value值，如果没有，返回undefined"></a>2.map.get(key),获取key对应的value值，如果没有，返回undefined</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.get(<span class="string">'one'</span>)) //1</span><br><span class="line">console.log(a.get(<span class="string">'three'</span>)) //undefined</span><br></pre></td></tr></table></figure>
 <h4 id="3-map-delete-key-删除某个key，成功返回true，失败返回false"><a href="#3-map-delete-key-删除某个key，成功返回true，失败返回false" class="headerlink" title="3.map.delete(key),删除某个key，成功返回true，失败返回false"></a>3.map.delete(key),删除某个key，成功返回true，失败返回false</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.delete(<span class="string">'one'</span>)) //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">//再次执行删除</span><br><span class="line">console.log(a.delete(<span class="string">'one'</span>)) //<span class="literal">false</span> 上面已经删除过了one,所有删除失败</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="4-map-has-key-返回布尔值，表示key是否存在"><a href="#4-map-has-key-返回布尔值，表示key是否存在" class="headerlink" title="4.map.has(key),返回布尔值，表示key是否存在"></a>4.map.has(key),返回布尔值，表示key是否存在</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.has(<span class="string">'one'</span>)) //<span class="literal">true</span></span><br><span class="line">console.log(a.has(<span class="string">'three'</span>)) //<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <h4 id="5-map-clear-，清空所有数据，没有返回"><a href="#5-map-clear-，清空所有数据，没有返回" class="headerlink" title="5.map.clear()，清空所有数据，没有返回"></a>5.map.clear()，清空所有数据，没有返回</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.clear()</span><br></pre></td></tr></table></figure>
 <h4 id="6-set-keys-返回key的遍历器"><a href="#6-set-keys-返回key的遍历器" class="headerlink" title="6.set.keys()返回key的遍历器"></a>6.set.keys()返回key的遍历器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.keys()</span><br></pre></td></tr></table></figure>
@@ -464,6 +465,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/20/es6-5/" rel="prev" title="iterator和for-of循环">
+                iterator和for-of循环 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -535,7 +540,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -557,7 +562,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
