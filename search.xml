@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[symbol数据类型]]></title>
     <url>%2F2018%2F04%2F28%2Fes6-8%2F</url>
-    <content type="text"><![CDATA[什么是symbolsymbol表示独一无二的值，它是js中第7中数据类型。 12//基本数据类型 null undefined Number Boolan String Symbol//引用数据类型 object 创建symbol123456let a = Symbol();console.log(typeof a); //symbollet a = Symbol();let b = Symbol();console.log(a === b) // false symbol函数前不能使用new,否则会报错。原因在于symbol是一个原始类型的值，不是一个对象。 123let a = Symbol();let b = Symbol();console.log(a,b) //Symbol(),Symbol() 这样没办法区分哪个是a,哪个是b,这样时候可以添加参数。123let a = Symbol('a');let b = Symbol('b');console.log(a,b) //Symbol(a),Symbol(b) symbol接受一个字符串做为参数，表示对symbol的描述，主要在控制台显示，或是转化为字符串的时候比较容易区分。1234567console.log(Symbol('a') === Symbol('a')) //false，参数仅仅只作为描述。### symole数据类型转换```bashconsole.log(String(Symbol('a'))) //'Symbol(a)'console.log(Symbol('a').toString()) //'Symbol(a)'console.log(!Symbol()) //false，symbol默认是true symbol不能转换成数字，不能字符串拼接，不能做任何运算。 symbol作为对象的属性名123456789101112let a = Symbol('name');let obj = &#123;&#125;obj[a] = 'liuguangkuo';console.log(obj) //&#123;Symbol(name): "liuguangkuo"&#125;console.log(obj[a]) //liuguangkuolet a = Symbol('name');let obj = &#123; [a] : 'liuguangkuo'&#125;console.log(obj) //&#123;Symbol(name): "liuguangkuo"&#125;console.log(obj[a]) //liuguangkuo 注意事项123456const obj = &#123; [Symbol()] : '123'&#125;console.log(obj) //&#123;Symbol(): "123"&#125;console.log(obj[Symbol()]) // undefinedconsole.log(obj['Symbol()']) // undefined 这样些的话，是拿不到键对应的值的。 12345678910const obj = &#123; [Symbol()] : '123', a : 1, b : 2&#125;for(let i in obj)&#123; console.log(i)&#125;//a//b 不能for-in循环遍历，虽然不能被遍历，但也不是私有属性，可以通过Object.getOwnPropertySymbols方法获得一个对象所有的Symbol属性。1234567const obj = &#123; [Symbol()] : '123', a : 1, b : 2&#125;console.log(Object.getOwnPropertySymbols(obj)) //返回obj下面所有的`symbol`类型，数组类型console.log(obj[Object.getOwnPropertySymbols(obj)[0]]) //123]]></content>
+    <content type="text"><![CDATA[什么是symbolsymbol表示独一无二的值，它是js中第7中数据类型。 12//基本数据类型 null undefined Number Boolan String Symbol//引用数据类型 object 创建symbol123456let a = Symbol();console.log(typeof a); //symbollet a = Symbol();let b = Symbol();console.log(a === b) // false symbol函数前不能使用new,否则会报错。原因在于symbol是一个原始类型的值，不是一个对象。 123let a = Symbol();let b = Symbol();console.log(a,b) //Symbol(),Symbol() 这样没办法区分哪个是a,哪个是b,这样时候可以添加参数。123let a = Symbol('a');let b = Symbol('b');console.log(a,b) //Symbol(a),Symbol(b) symbol接受一个字符串做为参数，表示对symbol的描述，主要在控制台显示，或是转化为字符串的时候比较容易区分。1234567console.log(Symbol('a') === Symbol('a')) //false，参数仅仅只作为描述。&lt;!--more--&gt;### symole数据类型转换```bashconsole.log(String(Symbol('a'))) //'Symbol(a)'console.log(Symbol('a').toString()) //'Symbol(a)'console.log(!Symbol()) //false，symbol默认是true symbol不能转换成数字，不能字符串拼接，不能做任何运算。 symbol作为对象的属性名123456789101112let a = Symbol('name');let obj = &#123;&#125;obj[a] = 'liuguangkuo';console.log(obj) //&#123;Symbol(name): "liuguangkuo"&#125;console.log(obj[a]) //liuguangkuolet a = Symbol('name');let obj = &#123; [a] : 'liuguangkuo'&#125;console.log(obj) //&#123;Symbol(name): "liuguangkuo"&#125;console.log(obj[a]) //liuguangkuo 注意事项123456const obj = &#123; [Symbol()] : '123'&#125;console.log(obj) //&#123;Symbol(): "123"&#125;console.log(obj[Symbol()]) // undefinedconsole.log(obj['Symbol()']) // undefined 这样些的话，是拿不到键对应的值的。 12345678910const obj = &#123; [Symbol()] : '123', a : 1, b : 2&#125;for(let i in obj)&#123; console.log(i)&#125;//a//b 不能for-in循环遍历，虽然不能被遍历，但也不是私有属性，可以通过Object.getOwnPropertySymbols方法获得一个对象所有的Symbol属性。1234567const obj = &#123; [Symbol()] : '123', a : 1, b : 2&#125;console.log(Object.getOwnPropertySymbols(obj)) //返回obj下面所有的`symbol`类型，数组类型console.log(obj[Object.getOwnPropertySymbols(obj)[0]]) //123]]></content>
       <categories>
         <category>es6</category>
       </categories>
@@ -16,7 +16,7 @@
   <entry>
     <title><![CDATA[class的继承]]></title>
     <url>%2F2018%2F04%2F27%2Fes6-7%2F</url>
-    <content type="text"><![CDATA[extendsclass可以通过extends关键字实现继承，这比es5通过修改原型链实现继承，要清晰方便的多。123456class point&#123;&#125;class colorPoint extends point&#123;&#125; 上面的代码，定义了一个colorPoint类，该类通过extends方法继承了point所有的属性和方法。但由于没有部署任何代码，所以两个类完全一样，等于复制了一份point类。12345678910class colorPoint&#123; constructor(x,y,color)&#123; super(x,y)//调用父类constructor(x,y) this.color = color; &#125; toString()&#123; return this.color + ' ' + super.toString();//调用父类的toString方法 &#125;&#125; 上面的代码中，constructor方法和toString方法中都出现了super关键字，他在这里表示父类的构造函数，用来新建父类的this对象。 子类必须在constructor中调用super方法，负责新建实例会报错，这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。如果不调用super方法，找不到子类的this对象。 在子类的构造函数中，只有调用了super方法，才能使用this关键字，否则会报错。这是因为子类实例的构造，是基于父类实例加工，super才能返回父类实例。1234567891011121314class point&#123; constructor(x,y)&#123; this.x = x; this.y = y; &#125;&#125;class colorPoint extends point&#123; constructor(x,y,color)&#123; this.color = color; //ReferenceError super(x,y); this.color = color; //正确 &#125;&#125; 上面代码中，子类的constructor方法没有调用super之前，就使用this关键字，结果报错，而放在super方法之后就是正确的。]]></content>
+    <content type="text"><![CDATA[extendsclass可以通过extends关键字实现继承，这比es5通过修改原型链实现继承，要清晰方便的多。123456class point&#123;&#125;class colorPoint extends point&#123;&#125; 上面的代码，定义了一个colorPoint类，该类通过extends方法继承了point所有的属性和方法。但由于没有部署任何代码，所以两个类完全一样，等于复制了一份point类。12345678910class colorPoint&#123; constructor(x,y,color)&#123; super(x,y)//调用父类constructor(x,y) this.color = color; &#125; toString()&#123; return this.color + ' ' + super.toString();//调用父类的toString方法 &#125;&#125; 上面的代码中，constructor方法和toString方法中都出现了super关键字，他在这里表示父类的构造函数，用来新建父类的this对象。 子类必须在constructor中调用super方法，负责新建实例会报错，这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。如果不调用super方法，找不到子类的this对象。在子类的构造函数中，只有调用了super方法，才能使用this关键字，否则会报错。这是因为子类实例的构造，是基于父类实例加工，super才能返回父类实例。1234567891011121314class point&#123; constructor(x,y)&#123; this.x = x; this.y = y; &#125;&#125;class colorPoint extends point&#123; constructor(x,y,color)&#123; this.color = color; //ReferenceError super(x,y); this.color = color; //正确 &#125;&#125; 上面代码中，子类的constructor方法没有调用super之前，就使用this关键字，结果报错，而放在super方法之后就是正确的。]]></content>
       <categories>
         <category>es6</category>
       </categories>
@@ -75,8 +75,8 @@
       </categories>
       <tags>
         <tag>es6</tag>
-        <tag>set</tag>
         <tag>javascript</tag>
+        <tag>set</tag>
       </tags>
   </entry>
   <entry>
@@ -88,8 +88,8 @@
       </categories>
       <tags>
         <tag>es6</tag>
-        <tag>javascript</tag>
         <tag>let</tag>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -101,9 +101,9 @@
       </categories>
       <tags>
         <tag>es6</tag>
-        <tag>javascript</tag>
         <tag>let</tag>
         <tag>const</tag>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
