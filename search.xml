@@ -5,7 +5,7 @@
     <url>%2F2018%2F07%2F18%2FstringFn%2F</url>
     <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829/* 处理过长的字符串，截取并添加省略号 * 注：半角长度为1，全角长度为2 * str:字符串 * len:截取长度 * return: 截取后的字符串 */function cutbytestr(str, len) &#123; var str_length = 0; var str_len = 0; str_cut = new String(); str_len = str.length; for (var i = 0; i &lt; str_len; i++) &#123; a = str.charAt(i); str_length++; if (escape(a).length &gt; 4) &#123; //中文字符的长度经编码之后大于4 str_length++; &#125; str_cut = str_cut.concat(a); if (str_length &gt;= len) &#123; str_cut = str_cut.concat("…"); return str_cut; &#125; &#125; //如果给定字符串小于指定长度，则返回源字符串； if (str_length &lt; len) &#123; return str; &#125;&#125; 1234567891011121314151617/* 处理过长的字符串，截取并添加省略号 * str:字符串 * len:截取长度 * return: 截取后的字符串 */function cutstr(str, len) &#123; var str_length = 0; var str_len = 0; str_len=str.length; if (str_len &lt;= len) &#123; return str; &#125;else&#123; str=str.substr(0,len); str = str.concat("…"); return str; &#125;&#125; 123456789/* 取字符串长度 * 注：汉字算两个字符，英文算一个字符 * str:字符串 * return: 长度 */function getStrLength(str) &#123; var cArr = str.match(/[^\x00-\xff]/ig); return str.length + (cArr == null ? 0 : cArr.length);&#125;]]></content>
       <categories>
-        <category>es6</category>
+        <category>javascript</category>
       </categories>
       <tags>
         <tag>javascript</tag>
@@ -139,8 +139,8 @@
       <tags>
         <tag>es6</tag>
         <tag>let</tag>
-        <tag>javascript</tag>
         <tag>const</tag>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
