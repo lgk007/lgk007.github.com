@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[js截取字符串(区分中文/英文)]]></title>
+    <url>%2F2018%2F07%2F18%2FstringFn%2F</url>
+    <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829/* 处理过长的字符串，截取并添加省略号 * 注：半角长度为1，全角长度为2 * str:字符串 * len:截取长度 * return: 截取后的字符串 */function cutbytestr(str, len) &#123; var str_length = 0; var str_len = 0; str_cut = new String(); str_len = str.length; for (var i = 0; i &lt; str_len; i++) &#123; a = str.charAt(i); str_length++; if (escape(a).length &gt; 4) &#123; //中文字符的长度经编码之后大于4 str_length++; &#125; str_cut = str_cut.concat(a); if (str_length &gt;= len) &#123; str_cut = str_cut.concat("…"); return str_cut; &#125; &#125; //如果给定字符串小于指定长度，则返回源字符串； if (str_length &lt; len) &#123; return str; &#125;&#125; 1234567891011121314151617/* 处理过长的字符串，截取并添加省略号 * str:字符串 * len:截取长度 * return: 截取后的字符串 */function cutstr(str, len) &#123; var str_length = 0; var str_len = 0; str_len=str.length; if (str_len &lt;= len) &#123; return str; &#125;else&#123; str=str.substr(0,len); str = str.concat("…"); return str; &#125;&#125; 123456789/* 取字符串长度 * 注：汉字算两个字符，英文算一个字符 * str:字符串 * return: 长度 */function getStrLength(str) &#123; var cArr = str.match(/[^\x00-\xff]/ig); return str.length + (cArr == null ? 0 : cArr.length);&#125;]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[箭头函数]]></title>
+    <url>%2F2018%2F05%2F02%2Fes6-10%2F</url>
+    <content type="text"><![CDATA[为箭头函数指定默认值es5使用函数想给参数添加默认值的时候可以这样写：123456function fn(a,b)&#123; a = a || 10; b = b || 20; console.log(a + b)&#125;fn(0,10) //20 上面的代码，给a传参数为0，但是判断的时候，0为false,所有得到20，为了解决上面的问题，es6新加入了默认值方法。12345function fn(a = 10,b = 20)&#123; console.log(a + b)&#125;fn() //30fn(0,20) //20 rest参数（…变量名）用于获取函数多余的参数，这样就不需要arguments对象了，rest参数搭配的变量是一个数组，该变量将多余的参数放入数组中。123456789function sum()&#123; var args = arguments; var res = 0; for(var i = 0;i &lt; args.length;i++)&#123; res += args[i] &#125; console.log(res)&#125;sum(1,2,3,4,5) //15 使用rest代替arguments。12345678function sum(...arr)&#123; var res = 0; for(var i = 0;i &lt; arr.length;i++)&#123; res += arr[i] &#125; console.log(res)&#125;sum(1,2,3,4,5) //15 rest注意事项：rest前面可以添加参数，但是后面不能添加参数，如果添加了会报错。12345678function sum(a,...arr)&#123; var res = a; for(var i = 0;i &lt; arr.length;i++)&#123; res += arr[i] &#125; console.log(res)&#125;sum(10,1,2,3,4,5) //25 箭头函数=&gt;1234567const fn = a =&gt; a;const fn2 function(a)&#123; return a;&#125;console.log(fn(1)) //1console.log(fn2(1)) //1 多个参数12const fn = (a , b) =&gt; a + b;console.log(fn(1,2)) //3 多行代码123456const fn = (a , b) =&gt; &#123; a = a * 2; b = b * 2; return a + b;&#125;console.log(fn(1,2)) //6 箭头返回值是对象的时候，需要用()包裹起来12const fn = (a , b) =&gt; (&#123;a , b&#125;);console.log(fn(1,2)) //&#123;a : 1,b : 2&#125; 箭头函数内没有自己的this对象，所有在使用的时候，其内部的this就是其定义的所在环境的对象，而不是使用时所在的对象。12345678910function fn()&#123; setTimeout(function()&#123; console.log(this) &#125;,1000); setTimeout(() =&gt;&#123; console.log(this) &#125;);&#125;let obj = &#123; a : 1&#125;fn.call(obj) //window,&#123;a : 1&#125; 箭头函数注意事项1.箭头函数不能使用call、apply、bind去改变其内部的this指向。2.箭头函数没有arguments对象，如果要用，可以用rest参数代替。123456789function fn()&#123; setTimeout(()=&gt;&#123; console.log(arguments) &#125;,1000)&#125;fn(1,2,3) //打印出fn的argumentsconst fn = (...arr) =&gt; arr;console.log(fn(1,2,3,4)) //[1,2,3,4] 3.箭头函数不可以当作构造函数，不可以用new命令，否则报错。4.箭头函数不可以用做Generator函数。]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>javascript</tag>
+        <tag>箭头函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[内置对象的扩展]]></title>
+    <url>%2F2018%2F04%2F28%2Fes6-9%2F</url>
+    <content type="text"><![CDATA[字符串的扩展平时在使用一段html结构的时候，使用:12345let html = '&lt;ul&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;/ul&gt;' 这样写的话，浏览器会报错，一般我们通过字符串拼接来使用html结构，但是这样会很麻烦。为了解决这个问题，es6新增了模版字符串。模版字符串，不再适用单引号或者双引号，而是使用 ` 符号:12345let html = `&lt;ul&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;/ul&gt;` 模版字符串的拼接12345let html = `&lt;ul&gt; &lt;li&gt;$('首页')&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;/ul&gt;` 123456let flg = true;let html = `&lt;ul&gt; &lt;li&gt;$('首页')&lt;/li&gt; &lt;li class="$&#123;flg ? 'show' : 'hide'&#125;"&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;/ul&gt;` repeat123let str1 = a;let str2 = str1.repeat(3)console.log(str2) //aaa includes()查找字符串中是否存在否某个字符，返回布尔值123let str = 'liuguangkuo'console.log(str.includes('guang')) //tureconsole.log(str.includes('xx')) //false startsWidth()查找字符串中第一个字符是否存在，返回布尔值123let str = 'liuguangkuo'console.log(str.startsWidth('l')) //tureconsole.log(str.startsWidth('i')) //false endsWidth()查找字符串中最后一个字符是否存在，返回布尔值123let str = 'liuguangkuo'console.log(str.endsWidth('o')) //tureconsole.log(str.endsWidth('u')) //false 数组的扩展Array.form()把类数组对象转换成真正的数组123456789&lt;ul&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt;&lt;/ul&gt;let li = document.querySelectAll('li');console.log(Array.isArray(li)); //false，li是类数组let li2 = Array.form(li);console.log(Array.isArray(li2)); //true Array.of()创建一个数组12let a = Array.of(1,2);console.log(a) //[1,2] find()查找数组中符合条件的元素，返回第一个元素，没有找到返回undefined12345const arr = [1,2,3,4]let res = arr.find(function(a)&#123; return a &lt; 2;&#125;)console.log(res); //1 findIndex()查找数组中符合条件的元素，返回复合元素的下标，没有找到返回-112345const arr = [1,2,3,4]let res = arr.findIndex(function(a)&#123; return a &lt; 2;&#125;)console.log(res); //0 fill()对数组进行填充12345let arr = [1,2,3,4]arr.fill('abc') //['abc','abc','abc','abc']let arr2 = [1,2,3,4]arr.fill('abc',1,3) //[1,'abc','abc',4] 对象的扩展对象的简洁表示发12345678910let a = 1;const obj = &#123; a : a;&#125;console.log(obj) //&#123;a : 1&#125;//简写let a = 1;const obj = &#123;a&#125;console.log(obj) //&#123;a : 1&#125; 1234567891011//函数简写const obj = &#123; fn : function()&#123; console.log(1) &#125;, fn2()&#123; console.log(2) &#125;&#125;obj.fn() //1obj.fn2() //2 Object.is() //判断两个数据是否一样(长的一样)，返回布尔值12console.log(Object.is(NaN,NaN)) //trueconsole.log(Object.is(+0,-0)) //false Object.assign() //用于对象的合并，将原对象可枚举的属性复制到目标对象1234let obj1 = &#123;a : 1&#125;;let obj2 = &#123;a : 2 , b : 2, c :3&#125;;let obj3 = &#123;d : 4&#125;console.log(Object.assign(obj1,obj2,obj3)) //&#123;a: 2, b: 2, c: 3, d: 4&#125; 如果合并的对象属性键值相同，那么后面的键值覆盖前面的键值。]]></content>
+      <categories>
+        <category>es6</category>
+      </categories>
+      <tags>
+        <tag>es6</tag>
+        <tag>javascript</tag>
+        <tag>symbol</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[symbol数据类型]]></title>
     <url>%2F2018%2F04%2F28%2Fes6-8%2F</url>
     <content type="text"><![CDATA[什么是symbolsymbol表示独一无二的值，它是js中第7中数据类型。 12//基本数据类型 null undefined Number Boolan String Symbol//引用数据类型 object 创建symbol123456let a = Symbol();console.log(typeof a); //symbollet a = Symbol();let b = Symbol();console.log(a === b) // false symbol函数前不能使用new,否则会报错。原因在于symbol是一个原始类型的值，不是一个对象。 123let a = Symbol();let b = Symbol();console.log(a,b) //Symbol(),Symbol() 这样没办法区分哪个是a,哪个是b,这样时候可以添加参数。123let a = Symbol('a');let b = Symbol('b');console.log(a,b) //Symbol(a),Symbol(b) symbol接受一个字符串做为参数，表示对symbol的描述，主要在控制台显示，或是转化为字符串的时候比较容易区分。1console.log(Symbol('a') === Symbol('a')) //false，参数仅仅只作为描述。 symole数据类型转换123console.log(String(Symbol('a'))) //'Symbol(a)'console.log(Symbol('a').toString()) //'Symbol(a)'console.log(!Symbol()) //false，symbol默认是true symbol不能转换成数字，不能字符串拼接，不能做任何运算。 symbol作为对象的属性名123456789101112let a = Symbol('name');let obj = &#123;&#125;obj[a] = 'liuguangkuo';console.log(obj) //&#123;Symbol(name): "liuguangkuo"&#125;console.log(obj[a]) //liuguangkuolet a = Symbol('name');let obj = &#123; [a] : 'liuguangkuo'&#125;console.log(obj) //&#123;Symbol(name): "liuguangkuo"&#125;console.log(obj[a]) //liuguangkuo 注意事项123456const obj = &#123; [Symbol()] : '123'&#125;console.log(obj) //&#123;Symbol(): "123"&#125;console.log(obj[Symbol()]) // undefinedconsole.log(obj['Symbol()']) // undefined 这样些的话，是拿不到键对应的值的。 12345678910const obj = &#123; [Symbol()] : '123', a : 1, b : 2&#125;for(let i in obj)&#123; console.log(i)&#125;//a//b 不能for-in循环遍历，虽然不能被遍历，但也不是私有属性，可以通过Object.getOwnPropertySymbols方法获得一个对象所有的Symbol属性。1234567const obj = &#123; [Symbol()] : '123', a : 1, b : 2&#125;console.log(Object.getOwnPropertySymbols(obj)) //返回obj下面所有的`symbol`类型，数组类型console.log(obj[Object.getOwnPropertySymbols(obj)[0]]) //123]]></content>
@@ -102,8 +139,8 @@
       <tags>
         <tag>es6</tag>
         <tag>let</tag>
-        <tag>const</tag>
         <tag>javascript</tag>
+        <tag>const</tag>
       </tags>
   </entry>
   <entry>
