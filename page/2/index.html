@@ -301,146 +301,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/es6-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/19/es6-1/" itemprop="url">es6 let和const</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T10:19:04+08:00">
-                2018-04-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/es6/" itemprop="url" rel="index">
-                    <span itemprop="name">es6</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="let的使用"><a href="#let的使用" class="headerlink" title="let的使用"></a>let的使用</h3><h4 id="1-使用let声明的变量只在命令所在的代码块内有效"><a href="#1-使用let声明的变量只在命令所在的代码块内有效" class="headerlink" title="1.使用let声明的变量只在命令所在的代码块内有效"></a>1.使用let声明的变量只在命令所在的代码块内有效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="built_in">let</span> a = 1;</span><br><span class="line">    var b = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(a) // a is not defined</span><br><span class="line">console.log(b) // 2</span><br></pre></td></tr></table></figure>
-<h4 id="2-使用let声明的变量在域解析的时候不会被提升"><a href="#2-使用let声明的变量在域解析的时候不会被提升" class="headerlink" title="2.使用let声明的变量在域解析的时候不会被提升"></a>2.使用let声明的变量在域解析的时候不会被提升</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.log(a) //a is not defined</span><br><span class="line"><span class="built_in">let</span> a = 1;</span><br><span class="line"></span><br><span class="line">console.log(b) //undefined</span><br><span class="line">var b = 2;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> c = 3;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>()&#123;</span><br><span class="line">    c = 10; //c is not defined(暂时性死去)</span><br><span class="line">    <span class="built_in">let</span> c = 20;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>()</span><br></pre></td></tr></table></figure>
-<h4 id="3-let不允许在同一个作用域下声明已经声明过的变量"><a href="#3-let不允许在同一个作用域下声明已经声明过的变量" class="headerlink" title="3.let不允许在同一个作用域下声明已经声明过的变量"></a>3.let不允许在同一个作用域下声明已经声明过的变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 0;</span><br><span class="line"><span class="built_in">let</span> a = 1; //错误</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> b = 0;</span><br><span class="line"><span class="built_in">let</span> b = 1;//错误</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/19/es6-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/nodeType/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1943,6 +1803,149 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/13/fit-editor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/13/fit-editor/" itemprop="url">ueditor自定义弹出框</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-13T09:41:35+08:00">
+                2017-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>最近公司产品上线了商城模块，为了方便推广，需要在文章里添加一个商品的信息，点击跳转都对应的商品详情页面，文章的编辑器使用的是百度的ueditor，看了下文档，可以使用自定义弹出框来实现这个效果。 </p>
+</blockquote>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>找到<code>ueditor.config.js</code>文件中的toolbars的数组，增加一个<code>mydialog</code>,然后找到<code>labelMap</code>对象，添加<code>&#39;mydialog&#39;:&#39;测试&#39;</code>,如果不需要全局也可以对单独文件添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var ue = UE.getEditor(<span class="string">'container'</span>,&#123;</span><br><span class="line">    toolbars: [</span><br><span class="line">        [<span class="string">'source'</span>, <span class="string">'undo'</span>, <span class="string">'redo'</span>, <span class="string">'bold'</span>,<span class="string">'link'</span>,<span class="string">'unlink'</span>,<span class="string">'simpleupload'</span>,<span class="string">'insertimage'</span>,<span class="string">'fontsize'</span>,<span class="string">'paragraph'</span>,<span class="string">'forecolor'</span>,<span class="string">'mydialog'</span>]</span><br><span class="line">    ],</span><br><span class="line">    labelMap : &#123;</span><br><span class="line">    	<span class="string">'mydialog'</span> : <span class="string">'测试'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>找到<code>dialogs</code>文件，新建<code>mydialog</code>文件夹，然后在文件夹里新建<code>mydialog.html</code>文件，这个文件自定义页面的代码，任何编辑修改都在这里，如参考<code>ling/link.html</code>文件。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/13/fit-editor/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1992,7 +1995,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2003,7 +2006,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -2014,7 +2017,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
