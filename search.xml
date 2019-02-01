@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[loadsh源码-数组compact(2)]]></title>
+    <title><![CDATA[loadsh源码-数组compact(3)]]></title>
     <url>%2F2019%2F02%2F01%2Floadsh-compat%2F</url>
     <content type="text"><![CDATA[使用方法1数组compact(array) 使用说明创建一个新数组，包含原数组中所有的非假值元素，例如：false、null、0、””、undefined和NaN都会被认为是假值。 参数1array (Array) =&gt; 需要处理的数组 例子12compact([0, 1, false, 2, '', 3])// =&gt; [1, 2, 3] 源码注释12345678910111213141516function compact(array) &#123; let resIndex = 0 const result = [] if (array == null) &#123; //判是否为null，成立返回空数组 return result &#125; for (const value of array) &#123; //循环每一个数组 if (value) &#123; result[resIndex++] = value //这样写result的length和值不对等，下面是我改写的方法 // result.push(value) &#125; &#125; return result&#125; 版本4.17.5]]></content>
       <categories>
