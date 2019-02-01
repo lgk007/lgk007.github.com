@@ -301,6 +301,152 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/es6-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小九">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/19/es6-4/" itemprop="url">map数据结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T15:52:55+08:00">
+                2018-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="创建map"><a href="#创建map" class="headerlink" title="创建map"></a>创建map</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([</span><br><span class="line">    [<span class="string">'a'</span>,1],</span><br><span class="line">    [<span class="string">'b'</span>,2]</span><br><span class="line">])</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p6.png">
+
+<h3 id="map的属性"><a href="#map的属性" class="headerlink" title="map的属性"></a>map的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.size) //2</span><br></pre></td></tr></table></figure>
+<h3 id="map的方法"><a href="#map的方法" class="headerlink" title="map的方法"></a>map的方法</h3><h4 id="1-map-set-key-value-设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key"><a href="#1-map-set-key-value-设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key" class="headerlink" title="1.map.set(key,value),设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key"></a>1.map.set(key,value),设置key对应的value值，然后返回map结构，如果key已经有值，则更新，否则生成新改key</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">a.set(<span class="string">'three'</span>,3)</span><br><span class="line">a.set(<span class="string">'four'</span>,4).set(<span class="string">'five'</span>,5)</span><br></pre></td></tr></table></figure>
+<image src="/2018/4-18/p7.png">
+
+<h4 id="2-map-get-key-获取key对应的value值，如果没有，返回undefined"><a href="#2-map-get-key-获取key对应的value值，如果没有，返回undefined" class="headerlink" title="2.map.get(key),获取key对应的value值，如果没有，返回undefined"></a>2.map.get(key),获取key对应的value值，如果没有，返回undefined</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.get(<span class="string">'one'</span>)) //1</span><br><span class="line">console.log(a.get(<span class="string">'three'</span>)) //undefined</span><br></pre></td></tr></table></figure>
+<h4 id="3-map-delete-key-删除某个key，成功返回true，失败返回false"><a href="#3-map-delete-key-删除某个key，成功返回true，失败返回false" class="headerlink" title="3.map.delete(key),删除某个key，成功返回true，失败返回false"></a>3.map.delete(key),删除某个key，成功返回true，失败返回false</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = new Map([[<span class="string">'one'</span>,1],[<span class="string">'two'</span>,2]])</span><br><span class="line">console.log(a.delete(<span class="string">'one'</span>)) //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">//再次执行删除</span><br><span class="line">console.log(a.delete(<span class="string">'one'</span>)) //<span class="literal">false</span> 上面已经删除过了one,所有删除失败</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/19/es6-4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/es6-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1802,146 +1948,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/25/js-replace/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小九">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/25/js-replace/" itemprop="url">js replace方法替换变量</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-25T15:51:17+08:00">
-                2017-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>使用editor编辑器，添加图的时候使用的是相对路径，但是客户端直接把这块呈现在页面里，导致图片打不开，从而考虑在编辑文本的时候在原来文本的url前添加域名，但是replace无法直接替换变量，看了些资料后找到了解决方法，如下：</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//替换第一个a</span><br><span class="line">string.replace(<span class="string">'a'</span>,<span class="string">'b'</span>)</span><br><span class="line">//替换全部a</span><br><span class="line">string.replace(/a/g,<span class="string">'b'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>但是我的后台分测试服务器及线上服务器，所有需要替换的值是一个变量:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(host,<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>这样写，可以替换第一个，到那时无法替换全部，然后改成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(/host/g,<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>这样写，无法替换，解决方法为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var host = <span class="string">'www.a.com'</span></span><br><span class="line">string.replace(new RegExp(host,<span class="string">'g'</span>),<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1991,7 +1997,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2013,7 +2019,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

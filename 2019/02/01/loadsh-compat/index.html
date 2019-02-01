@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="es6,javascript,class," />
+  <meta name="keywords" content="javascript,loadsh,数组数组compact," />
 
 
 
@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="extendsclass可以通过extends关键字实现继承，这比es5通过修改原型链实现继承，要清晰方便的多。123456class point&amp;#123;&amp;#125;class colorPoint extends point&amp;#123;&amp;#125; 上面的代码，定义了一个colorPoint类，该类通过extends方法继承了point所有的属性和方法。但由于没有部署任何代码，所以两个类完全">
-<meta name="keywords" content="es6,javascript,class">
+<meta name="description" content="使用方法1数组compact(array) 使用说明创建一个新数组，包含原数组中所有的非假值元素，例如：false、null、0、””、undefined和NaN都会被认为是假值。 参数1array (Array) =&amp;gt; 需要处理的数组 例子12compact([0, 1, false, 2, &apos;&apos;, 3])// =&amp;gt; [1, 2, 3] 源码注释1234567891011121314">
+<meta name="keywords" content="javascript,loadsh,数组数组compact">
 <meta property="og:type" content="article">
-<meta property="og:title" content="class的继承">
-<meta property="og:url" content="http://yoursite.com/2018/04/27/es6-7/index.html">
+<meta property="og:title" content="loadsh源码-数组compact(2)">
+<meta property="og:url" content="http://yoursite.com/2019/02/01/loadsh-compat/index.html">
 <meta property="og:site_name" content="随记">
-<meta property="og:description" content="extendsclass可以通过extends关键字实现继承，这比es5通过修改原型链实现继承，要清晰方便的多。123456class point&amp;#123;&amp;#125;class colorPoint extends point&amp;#123;&amp;#125; 上面的代码，定义了一个colorPoint类，该类通过extends方法继承了point所有的属性和方法。但由于没有部署任何代码，所以两个类完全">
+<meta property="og:description" content="使用方法1数组compact(array) 使用说明创建一个新数组，包含原数组中所有的非假值元素，例如：false、null、0、””、undefined和NaN都会被认为是假值。 参数1array (Array) =&amp;gt; 需要处理的数组 例子12compact([0, 1, false, 2, &apos;&apos;, 3])// =&amp;gt; [1, 2, 3] 源码注释1234567891011121314">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-28T07:19:02.000Z">
+<meta property="og:updated_time" content="2019-02-01T10:21:09.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="class的继承">
-<meta name="twitter:description" content="extendsclass可以通过extends关键字实现继承，这比es5通过修改原型链实现继承，要清晰方便的多。123456class point&amp;#123;&amp;#125;class colorPoint extends point&amp;#123;&amp;#125; 上面的代码，定义了一个colorPoint类，该类通过extends方法继承了point所有的属性和方法。但由于没有部署任何代码，所以两个类完全">
+<meta name="twitter:title" content="loadsh源码-数组compact(2)">
+<meta name="twitter:description" content="使用方法1数组compact(array) 使用说明创建一个新数组，包含原数组中所有的非假值元素，例如：false、null、0、””、undefined和NaN都会被认为是假值。 参数1array (Array) =&amp;gt; 需要处理的数组 例子12compact([0, 1, false, 2, &apos;&apos;, 3])// =&amp;gt; [1, 2, 3] 源码注释1234567891011121314">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/27/es6-7/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/01/loadsh-compat/"/>
 
 
 
 
 
-  <title>class的继承 | 随记</title>
+  <title>loadsh源码-数组compact(2) | 随记</title>
   
 
 
@@ -301,7 +301,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/27/es6-7/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/loadsh-compat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小九">
@@ -318,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">class的继承</h1>
+          <h1 class="post-title" itemprop="name headline">loadsh源码-数组compact(2)</h1>
         
 
         <div class="post-meta">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T10:37:01+08:00">
-                2018-04-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-01T18:03:29+08:00">
+                2019-02-01
               </time>
             
 
@@ -353,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/es6/" itemprop="url" rel="index">
-                    <span itemprop="name">es6</span>
+                  <a href="/categories/loadsh/" itemprop="url" rel="index">
+                    <span itemprop="name">loadsh</span>
                   </a>
                 </span>
 
@@ -387,11 +387,12 @@
       
 
       
-        <h3 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h3><p>class可以通过<code>extends</code>关键字实现继承，这比es5通过修改原型链实现继承，要清晰方便的多。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class point&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">class colorPoint extends point&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码，定义了一个<code>colorPoint</code>类，该类通过<code>extends</code>方法继承了<code>point</code>所有的属性和方法。但由于没有部署任何代码，所以两个类完全一样，等于复制了一份<code>point</code>类。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class colorPoint&#123;</span><br><span class="line">    constructor(x,y,color)&#123;</span><br><span class="line">        super(x,y)//调用父类constructor(x,y)</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">toString</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> this.color + <span class="string">' '</span> + super.toString();//调用父类的toString方法</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码中，<code>constructor</code>方法和<code>toString</code>方法中都出现了<code>super</code>关键字，他在这里表示父类的构造函数，用来新建父类的<code>this</code>对象。</p>
-<p>子类必须在<code>constructor</code>中调用<code>super</code>方法，负责新建实例会报错，这是因为子类没有自己的<code>this</code>对象，而是继承父类的<code>this</code>对象，然后对其进行加工。如果不调用<code>super</code>方法，找不到子类的<code>this</code>对象。<br><a id="more"></a><br>在子类的构造函数中，只有调用了<code>super</code>方法，才能使用<code>this</code>关键字，否则会报错。这是因为子类实例的构造，是基于父类实例加工，<code>super</code>才能返回父类实例。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class point&#123;</span><br><span class="line">    constructor(x,y)&#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class colorPoint extends point&#123;</span><br><span class="line">    constructor(x,y,color)&#123;</span><br><span class="line">        this.color = color; //ReferenceError</span><br><span class="line">        super(x,y);</span><br><span class="line">        this.color = color; //正确</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，子类的<code>constructor</code>方法没有调用<code>super</code>之前，就使用<code>this</code>关键字，结果报错，而放在<code>super</code>方法之后就是正确的。</p>
+        <h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数组compact(array)</span><br></pre></td></tr></table></figure>
+<h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><p>创建一个新数组，包含原数组中所有的非假值元素，例如：false、null、0、””、undefined和NaN都会被认为是假值。</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array (Array) =&gt; 需要处理的数组</span><br></pre></td></tr></table></figure>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compact([0, 1, <span class="literal">false</span>, 2, <span class="string">''</span>, 3])</span><br><span class="line">// =&gt; [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<h4 id="源码注释"><a href="#源码注释" class="headerlink" title="源码注释"></a>源码注释</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> compact(array) &#123;</span><br><span class="line">  <span class="built_in">let</span> resIndex = 0</span><br><span class="line">  const result = []</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (array == null) &#123; //判是否为null，成立返回空数组</span><br><span class="line">    <span class="built_in">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (const value of array) &#123; //循环每一个数组</span><br><span class="line">    <span class="keyword">if</span> (value) &#123;</span><br><span class="line">      result[resIndex++] = value //这样写result的length和值不对等，下面是我改写的方法</span><br><span class="line">      // result.push(value) </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><p>4.17.5</p>
 
       
     </div>
@@ -421,11 +422,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/es6/" rel="tag"># es6</a>
-          
             <a href="/tags/javascript/" rel="tag"># javascript</a>
           
-            <a href="/tags/class/" rel="tag"># class</a>
+            <a href="/tags/loadsh/" rel="tag"># loadsh</a>
+          
+            <a href="/tags/数组数组compact/" rel="tag"># 数组数组compact</a>
           
         </div>
       
@@ -438,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/20/es6-6/" rel="next" title="class的基础使用">
-                <i class="fa fa-chevron-left"></i> class的基础使用
+              <a href="/2019/02/01/vue-35-project/" rel="next" title="力荐 35 个最好用的 Vue 开源库">
+                <i class="fa fa-chevron-left"></i> 力荐 35 个最好用的 Vue 开源库
               </a>
             
           </div>
@@ -447,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/28/es6-8/" rel="prev" title="symbol数据类型">
-                symbol数据类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -579,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#extends"><span class="nav-number">1.</span> <span class="nav-text">extends</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方法"><span class="nav-number">1.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用说明"><span class="nav-number">2.</span> <span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数"><span class="nav-number">3.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-number">4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码注释"><span class="nav-number">5.</span> <span class="nav-text">源码注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版本"><span class="nav-number">6.</span> <span class="nav-text">版本</span></a></li></ol></div>
             
 
           </div>
